@@ -1,0 +1,53 @@
+Pin2Me
+
+Pin website to New Tab page from any device, any browser! Support Import/Export without sign-in.
+
+Highlight
+	- Dart/Light Theme
+	- Drag & Drop to rearrange pinned sites
+	- Import/Export
+	- Large Icon
+	- Sites are saved locally in your browser
+	- Unlimited sites
+
+Google Login(optional) enable following
+	- Saved pinned sites in your Google Drive [AppData] folder
+	- Synced between browsers
+	- Access pinned sites from https://pin2me.dev/
+		- For browsers/devices don't support add-on/extension
+
+Import/Export Support
+	- Apply setting from editor box
+	- Copy to clipboard
+	- Save to file (Pin2Me.json)
+	- Import
+		- Save pinned sites to your browser, and sync to your Google Drive 'AppData' folder if signed-in.
+		- No upload to other server. This is the same when using https://pin2me.dev/ .
+
+Import/Export Access
+	1. Click 3-dot icon on upper right to expand menu items
+	2. Click setting icon
+	3. Click 'Advance' in pop-up dialog
+	4. Click 'Import/Export' button
+
+Import
+	1. Open Pin2Me.json with text editor
+	2. Copy and paste content into Import/Export editor box
+	3. Click 'Apply'.
+
+Preset Sites
+
+	Pin2Me comes with a few preset sites. Their URLs and names cannot be change, but can moved and removed. To remove them:
+	- One by One
+		- Double click to open site setting
+		- Click 'Delete'
+	- Remove All
+		1. Click 3-dot icon on upper right to expand menu items
+		2. Click setting icon
+		3. Click 'Advance' in pop-up dialog
+		4. Click 'Remove Default Sites'
+
+Planned
+	- Drag & Drop for import
+	- More platforms
+	- Pinning from web page context menu

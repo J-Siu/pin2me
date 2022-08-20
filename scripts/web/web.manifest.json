@@ -1,0 +1,24 @@
+{
+	"author": "JSiu.Dev",
+	"description": "Pin your website from any device, any browser! Support Import/Export without sign-in.",
+	"display": "standalone",
+	"manifest_version": 3,
+	"name": "Pin2Me",
+	"orientation": "portrait-primary",
+	"prefer_related_applications": false,
+	"short_name": "Pin2Me",
+	"start_url": ".",
+	"version": "1.0.22",
+	"icons": [
+		{
+			"src": "icons/pin2me-128.png",
+			"sizes": "128x128",
+			"type": "image/png"
+		},
+		{
+			"src": "icons/pin2me-512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	]
+}

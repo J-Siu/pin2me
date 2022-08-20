@@ -1,0 +1,50 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "pin2me(canvaskit)",
+			"request": "launch",
+			"type": "dart",
+			"args": [
+				"--web-port",
+				"50000",
+				"--web-renderer",
+				"canvaskit",
+			],
+		},
+		{
+			"name": "pin2me(html)",
+			"request": "launch",
+			"type": "dart",
+			"args": [
+				"--web-port",
+				"50000",
+				"--web-renderer",
+				"html",
+			],
+		},
+		{
+			"name": "pin2me (profile mode)",
+			"request": "launch",
+			"type": "dart",
+			"flutterMode": "profile",
+			"args": [
+				"--web-port",
+				"50000"
+			],
+		},
+		{
+			"name": "pin2me (release mode)",
+			"request": "launch",
+			"type": "dart",
+			"flutterMode": "release",
+			"args": [
+				"--web-port",
+				"50000"
+			],
+		}
+	]
+}

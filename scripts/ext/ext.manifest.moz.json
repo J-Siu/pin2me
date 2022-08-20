@@ -1,0 +1,27 @@
+{
+	"author": "JSiu.Dev",
+	"chrome_url_overrides": {
+		"newtab": "index.html"
+	},
+	"description": "Pin your website from any device, any browser! Support Import/Export without sign-in.",
+	"icons": {
+		"128": "favicon.png",
+		"512": "icons/pin2me-512.png"
+	},
+	"manifest_version": 2,
+	"name": "Pin2Me",
+	"permissions": [
+		"identity",
+		"notifications",
+		"*://www.googleapis.com/*",
+		"*://accounts.google.com/*"
+	],
+	"short_name": "Pin2Me",
+	"version": "1.0.22",
+	"content_security_policy": "script-src 'self' https://apis.google.com; object-src 'self'",
+	"browser_specific_settings": {
+		"gecko": {
+			"id": "pin2me@jsiu.dev"
+		}
+	}
+}

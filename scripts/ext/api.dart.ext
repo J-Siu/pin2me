@@ -1,0 +1,3 @@
+import 'package:lazy_sign_in_extension/lazy_sign_in_extension.dart' as lazy;
+
+typedef Api = lazy.SignInExt;
