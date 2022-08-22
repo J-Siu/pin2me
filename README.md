@@ -18,7 +18,7 @@ Pin website to New Tab page from any device, any browser! Support Import/Export 
     - [Remove All](#remove-all)
 - [Repository](#repository)
 - [Contributors](#contributors)
-- [Change Log](#change-log)
+- [Library](#library)
 - [License](#license)
 
 <!-- /TOC -->
@@ -40,8 +40,8 @@ Platform|URL
 ---|---
 Web|https://pin2me.dev/
 Demo|https://j-siu.github.io/app/pin2me.dev/
-Chrome Extension|Pending Review
-Firefox Extension|Pending Review
+Chrome Extension|https://chrome.google.com/webstore/detail/pin2me/hclokpdkmfceobbckckjkdohdgeljlld
+Firefox Extension|https://addons.mozilla.org/en-US/firefox/addon/pin2me/
 
 ### Usage
 
@@ -103,6 +103,9 @@ Planned
 
 - [John, Sing Dao, Siu](https://github.com/J-Siu)
 
+### Change Log
+
+- [CHANGELOG.md](CHANGELOG.md)
 ### Library
 
 Library|Source|Pub.Dev
