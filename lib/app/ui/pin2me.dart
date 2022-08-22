@@ -90,11 +90,11 @@ class _Pin2Me extends State<Pin2Me> {
     );
 
     // Display user avatar if sign-in and available
-    Widget widgetAvatar = Consumer2<lazy.SignInMsg, OptionService>(
-      builder: (context, msg, option, child) {
+    Widget widgetAvatar = Consumer2<OptionService, lazy.SignInMsg>(
+      builder: (context, option, msg, child) {
         List<Widget> children = [];
         if (option.gSync &&
-            msg.status &&
+            // msg.status &&
             globalLazySignIn.photoUrl.isNotEmpty) {
           children.add(SizedBox(
             height: appbarIconSize,
