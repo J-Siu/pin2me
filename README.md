@@ -27,6 +27,8 @@ Pin website to New Tab page from any device, any browser! Support Import/Export 
 
 ### Highlight
 
+![Dark & Light Theme](doc/light_dark.png) ![Icon Size](doc/large_and_small_icon.png)
+
 - Dart/Light Theme
 - Drag & Drop to rearrange pinned sites
 - Import/Export
