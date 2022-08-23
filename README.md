@@ -16,6 +16,8 @@ Pin website to New Tab page from any device, any browser! Support Import/Export 
   - [Preset Sites](#preset-sites)
     - [Remove One by One](#remove-one-by-one)
     - [Remove All](#remove-all)
+- [Planned](#planned)
+- [Issue](#issue)
 - [Build](#build)
 - [Repository](#repository)
 - [Contributors](#contributors)
@@ -90,10 +92,15 @@ Pin2Me comes with a few preset sites. Their URLs and names cannot be change, but
 3. Click 'Advance' in pop-up dialog
 4. Click 'Remove Default Sites'
 
-Planned
+### Planned
 - Drag & Drop for import
 - More platforms
 - Extension support web page context menu
+
+### Issue
+- Firefox
+  - #2 Extension showing a extension url in address bar
+  - Add-on not activating on first tab
 
 ### Build
 
