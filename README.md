@@ -16,8 +16,10 @@ Pin website to New Tab page from any device, any browser! Support Import/Export 
   - [Preset Sites](#preset-sites)
     - [Remove One by One](#remove-one-by-one)
     - [Remove All](#remove-all)
+- [Build](#build)
 - [Repository](#repository)
 - [Contributors](#contributors)
+- [Change Log](#change-log)
 - [Library](#library)
 - [License](#license)
 
@@ -93,7 +95,7 @@ Planned
 - More platforms
 - Extension support web page context menu
 
-## Build
+### Build
 
 - [BUILD.md](BUILD.md)
 
