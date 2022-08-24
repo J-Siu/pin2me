@@ -108,7 +108,7 @@ Pin2Me comes with a few preset sites. Their URLs and names cannot be change, but
 
 ### Repository
 
-- [pin2me](https://github.com/J-Siu/pin2m2/)
+- [pin2me](https://github.com/J-Siu/pin2me/)
 
 ### Contributors
 
