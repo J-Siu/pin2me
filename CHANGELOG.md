@@ -1,3 +1,5 @@
+- 1.0.24
+  - Firefox extension manifest.json clean up
 - 1.0.23
   - Add lock option
   - Fix #1 Extension don't show avatar

@@ -76,6 +76,8 @@ flutter clean
 scripts/buildExt.sh
 ```
 
+PS: First time 'flutter clean' error can be ignored.
+
 Target location:
 
 Platform|Mode|Path|Javascript Minified

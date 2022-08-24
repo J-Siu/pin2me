@@ -20,7 +20,7 @@ void main() async {
   globalLazyAbout.repo = 'Github';
   globalLazyAbout.repoUrl = 'https://github.com/j-siu/pin2me/';
   globalLazyAbout.title = 'Pin2Me';
-  globalLazyAbout.version = '1.0.23';
+  globalLazyAbout.version = '1.0.24';
 
   // Pre-loading all options to prevent widget rebuild trigger by notification
   await globalOptionUI.load();
