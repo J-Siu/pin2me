@@ -5,19 +5,20 @@ source $DIR_SCRIPT/buildCommon.sh
 
 APP_NAME=${PWD##*/}
 BASE_HREF="/"
-BUILD_OPTION="$RENDERER_HTML $CSP $PROFILE"
 
 prepExt
 flutter clean
 
+BUILD_OPTION="$RENDERER_HTML $CSP"
+prepExtMoz
+buildExt moz
+
 prepExtChrome
 buildExt chrome
 
+BUILD_OPTION="$RENDERER_HTML $CSP $PROFILE"
 prepExtChromeTest
 buildExt chrome.test
-
-prepExtMoz
-buildExt moz
 
 # chnage back to web
 prepWeb
