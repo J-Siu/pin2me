@@ -9,16 +9,23 @@ BASE_HREF="/"
 prepExt
 flutter clean
 
+# Build Prod
 BUILD_OPTION="$RENDERER_HTML $CSP"
-prepExtMoz
-buildExt moz
 
 prepExtChrome
 buildExt chrome
 
-BUILD_OPTION="$RENDERER_HTML $CSP $PROFILE"
-prepExtChromeTest
-buildExt chrome.test
+prepExtMoz
+buildExt moz
 
-# chnage back to web
+# Build Test
+BUILD_OPTION="$RENDERER_HTML $CSP $PROFILE"
+
+prepExtChromeTest
+buildExt chrome.profile
+
+prepExtMoz
+buildExt moz.profile
+
+# switch back to web
 prepWeb

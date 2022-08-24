@@ -6,10 +6,6 @@
 - [Build](#build)
   - [Web](#web)
   - [Extension](#extension)
-    - [Production](#production)
-    - [Non-minify / Profile](#non-minify--profile)
-      - [Chrome](#chrome)
-      - [Firefox](#firefox)
 
 <!-- /TOC -->
 
@@ -28,11 +24,29 @@ Install Flutter: https://docs.flutter.dev/get-started/install
 - Is used due to difference between web, Chrome extension and Firefox extension.
 - Switch `pubspec.yaml`, `index.html`, `manifest.json` and `api.dart` accordingly.
 
-
 ### Build
+
+From zip:
+
+```sh
+unzip pin2me.zip
+```
+
+From Github
+
+```sh
+git clone https://github.com/J-Siu/pin2me
+```
+
 #### Web
 
-On source root:
+Go into source root(`pin2me`):
+
+```sh
+cd pin2me
+```
+
+Then:
 
 ```sh
 scripts/switchWeb.sh
@@ -49,9 +63,13 @@ PS: Do not use `buildDemo.sh` and `buildSite.sh` as they are specific for author
 
 Compiled extension are html/javascript only, no web assembly.
 
-##### Production
+Go into source root(`pin2me`):
 
-On source root:
+```sh
+cd pin2me
+```
+
+Then:
 
 ```sh
 flutter clean
@@ -59,34 +77,10 @@ scripts/buildExt.sh
 ```
 
 Target location:
-- Chrome `~/Download/pin2me/chrome`
-- Firefox `~/Download/pin2me/moz`
 
-##### Non-minify / Profile
-
-The only way for Dart/Flutter to build non-minify target is to use `--profile` flag.
-
-###### Chrome
-On source root
-```sh
-scripts/switchExtChrome
-flutter clean
-flutter build web --profile --web-renderer html
-rm build/web/flutter.js
-rm -rf build/web/canvaskit
-```
-
-###### Firefox
-On source root
-```sh
-scripts/switchExtMoz
-flutter clean
-flutter build web --profile --web-renderer html
-rm build/web/flutter.js
-rm -rf build/web/canvaskit
-```
-
-Compiled code location:
-- `<source root>/build/web`
-- Extension `index.html` start `main.dart.js` directly.
-- `flutter.js`, `flutter_service_worker.js` and `canvaskit/` are not used and can be deleted.
+Platform|Mode|Path|Javascript Minified
+---|---|---|---
+Chrome|Release|`~/Download/pin2me/chrome`|yes
+Chrome|Profile|`~/Download/pin2me/chrome.profile`|no
+Firefox|Release|`~/Download/pin2me/moz`|yes
+Firefox|Profile|`~/Download/pin2me/moz.profile`|no
