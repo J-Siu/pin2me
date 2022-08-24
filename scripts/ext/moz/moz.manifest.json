@@ -8,7 +8,6 @@
 	"chrome_url_overrides": {
 		"newtab": "index.html"
 	},
-	"content_security_policy": "script-src 'self' https://apis.google.com; object-src 'self'",
 	"description": "Pin your website from any device, any browser! Support Import/Export without sign-in.",
 	"icons": {
 		"128": "icons/pin2me-128.png",
