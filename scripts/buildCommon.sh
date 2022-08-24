@@ -87,5 +87,6 @@ function buildExt {
 
 	# Not use in extension
 	rm ${DIR_TARGET}/flutter.js
+	rm ${DIR_TARGET}/flutter_service_worker.js
 	rm -rf ${DIR_TARGET}/canvaskit
 }

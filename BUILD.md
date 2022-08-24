@@ -89,4 +89,4 @@ rm -rf build/web/canvaskit
 Compiled code location:
 - `<source root>/build/web`
 - Extension `index.html` start `main.dart.js` directly.
-- `flutter.js` and `canvaskit/` are not used and can be deleted.
+- `flutter.js`, `flutter_service_worker.js` and `canvaskit/` are not used and can be deleted.
