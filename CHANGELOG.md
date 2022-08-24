@@ -1,4 +1,5 @@
 - 1.0.23
+  - Add lock option
   - Fix #1 Extension don't show avatar
 - 1.0.22
   - Feature complete
