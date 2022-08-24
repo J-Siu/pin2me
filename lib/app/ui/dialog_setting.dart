@@ -114,6 +114,16 @@ void dialogSetting(BuildContext context) {
         type: lazy.SwitchType.onOff,
         value: optionUI.largeIcon,
       ));
+      // Large Lock Switch
+      lazyLabeledSwitches.add(lazy.LabeledSwitch(
+        activeText: 'Lock',
+        inactiveText: 'Small',
+        lazySwitch: lazySwitch,
+        name: 'Lock',
+        onToggle: (v) => optionUI.lock = v,
+        type: lazy.SwitchType.onOff,
+        value: optionUI.lock,
+      ));
       // Google Sync
       lazyLabeledSwitches.add(lazy.LabeledSwitch(
         name: 'Google Drive Sync',

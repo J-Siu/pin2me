@@ -150,15 +150,38 @@ class _Pin2Me extends State<Pin2Me> {
     //     children: siteWidgets.list,
     //   );
     // });
-    Widget reorderableWarp = ReorderableWrap(
-      alignment: WrapAlignment.center,
-      buildDraggableFeedback: _reorderableWarpFeedback,
-      footer: spacer,
-      header: [spacer],
-      onReorder: Provider.of<WidgetSites>(context).reorder,
-      runAlignment: WrapAlignment.start,
-      children: Provider.of<WidgetSites>(context).list,
-    );
+    Widget sitesWrapReorderable() => ReorderableWrap(
+          alignment: WrapAlignment.center,
+          buildDraggableFeedback: _reorderableWarpFeedback,
+          footer: spacer,
+          header: [spacer],
+          onReorder: Provider.of<WidgetSites>(context).reorder,
+          runAlignment: WrapAlignment.start,
+          children: Provider.of<WidgetSites>(context).list,
+        );
+
+    Widget sitesWrap() {
+      var children = [spacer];
+      children.addAll(Provider.of<WidgetSites>(context).list);
+      children.add(spacer);
+      return SingleChildScrollView(
+        child: Wrap(
+          alignment: WrapAlignment.center,
+          runAlignment: WrapAlignment.start,
+          // children: Provider.of<WidgetSites>(context).list,
+          children: children,
+        ),
+      );
+    }
+
+    Widget sitesList() =>
+        Consumer<OptionUI>(builder: (context, optionUI, child) {
+          if (optionUI.lock) {
+            return sitesWrap();
+          } else {
+            return sitesWrapReorderable();
+          }
+        });
 
     return Scaffold(
       appBar: appBar,
@@ -170,7 +193,8 @@ class _Pin2Me extends State<Pin2Me> {
             scrollbars: false,
           ),
           // child: Align(
-          child: reorderableWarp,
+          // child: reorderableWarp,
+          child: sitesList(),
           // ),
         ),
       ),

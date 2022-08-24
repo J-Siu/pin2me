@@ -6,6 +6,7 @@ const String defaultKeyOptionUI = 'OptionUI';
 class _OptionUIField {
   static const String showName = 'showName';
   static const String largeIcon = 'largeIcon';
+  static const String lock = 'lock';
 }
 
 class OptionUI extends JsonPreferenceNotify {
@@ -49,6 +50,23 @@ class OptionUI extends JsonPreferenceNotify {
 
   set largeIcon(bool v) {
     String name = _OptionUIField.largeIcon;
+    if (obj[name] == null || obj[name] != v) {
+      obj[name] = v;
+      save(debugMsg: '$runtimeType.$name:$v');
+      notifyListeners();
+    }
+  }
+
+  bool get lock {
+    String name = _OptionUIField.lock;
+    if (obj[name] == null) {
+      obj[name] = false;
+    }
+    return obj[name];
+  }
+
+  set lock(bool v) {
+    String name = _OptionUIField.lock;
     if (obj[name] == null || obj[name] != v) {
       obj[name] = v;
       save(debugMsg: '$runtimeType.$name:$v');
