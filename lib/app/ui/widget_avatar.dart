@@ -55,18 +55,18 @@ class _WidgetAvatar extends State {
     String debugPrefix = '$runtimeType._setShow()';
     lazy.log(debugPrefix);
 
-    await Future.delayed(const Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 2));
 
     bool sync = (globalOptionService.gSync);
     bool signIn = globalLazySignIn.token.isNotEmpty;
     bool show = sync && signIn && globalLazySignIn.photoUrl.isNotEmpty;
-    // lazy.log('$debugPrefix:refresh:$refresh');
-    // lazy.log('$debugPrefix:_gSync:$sync');
-    // lazy.log('$debugPrefix:_SignIn:$signIn');
-    // lazy.log(
-    //     '$debugPrefix:globalLazySignIn.photoUrl:${globalLazySignIn.photoUrl}');
-    // lazy.log('$debugPrefix:globalLazySignIn.token:${globalLazySignIn.token}');
-    // lazy.log('$debugPrefix:$show');
+    lazy.log('$debugPrefix:refresh:$refresh');
+    lazy.log('$debugPrefix:_gSync:$sync');
+    lazy.log('$debugPrefix:_SignIn:$signIn');
+    lazy.log(
+        '$debugPrefix:globalLazySignIn.photoUrl:${globalLazySignIn.photoUrl}');
+    lazy.log('$debugPrefix:globalLazySignIn.token:${globalLazySignIn.token}');
+    lazy.log('$debugPrefix:$show');
     if (_show != show) {
       _show = show;
       if (refresh) {
