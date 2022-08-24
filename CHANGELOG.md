@@ -1,2 +1,4 @@
+- 1.0.23
+  - Fix #1 Extension don't show avatar
 - 1.0.22
   - Feature complete

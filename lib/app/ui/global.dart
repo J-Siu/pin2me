@@ -37,7 +37,7 @@ final globalLazyGSync = lazy.GSync(
   },
 );
 
-final globalSiteWidgets = SiteWidgets(globalSites);
+final globalWidgetSites = WidgetSites(globalSites);
 
 class Logo {
   static final _logo = {

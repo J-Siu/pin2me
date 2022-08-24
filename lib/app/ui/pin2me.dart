@@ -1,6 +1,7 @@
+// import 'package:lazy_sign_in/lazy_sign_in.dart' as lazy;
 import 'package:flutter/material.dart';
 import 'package:lazy_collection/lazy_collection.dart' as lazy;
-import 'package:lazy_sign_in/lazy_sign_in.dart' as lazy;
+import 'package:lazy_log/lazy_log.dart' as lazy;
 import 'package:reorderables/reorderables.dart';
 import 'ui.dart';
 
@@ -33,7 +34,6 @@ class _Pin2Me extends State<Pin2Me> {
   Widget build(BuildContext context) {
     // String debugPrefix = '$runtimeType.build';
     String themeId = ThemeProvider.controllerOf(context).currentThemeId;
-    // String? title = widget.title;
     double appbarIconSize = lazy.textStyleHeadlineM(context)!.fontSize!;
 
     Widget logo = SizedBox(
@@ -89,26 +89,27 @@ class _Pin2Me extends State<Pin2Me> {
       },
     );
 
-    // Display user avatar if sign-in and available
-    Widget widgetAvatar = Consumer2<OptionService, lazy.SignInMsg>(
-      builder: (context, option, msg, child) {
-        List<Widget> children = [];
-        if (option.gSync &&
-            // msg.status &&
-            globalLazySignIn.photoUrl.isNotEmpty) {
-          children.add(SizedBox(
-            height: appbarIconSize,
-            width: appbarIconSize,
-            child: imageAvatar(Image.network(globalLazySignIn.photoUrl)),
-          ));
-        }
-        return Row(
-          // mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: children,
-        );
-      },
-    );
+    // // Display user avatar if sign-in and available
+    // Widget widgetAvatar = Consumer2<OptionService, lazy.SignInMsg>(
+    //   builder: (context, option, msg, child) {
+    //     List<Widget> children = [];
+    //     if (option.gSync &&
+    //         // msg.status &&
+    //         globalLazySignIn.photoUrl.isNotEmpty) {
+    //       children.add(SizedBox(
+    //         height: appbarIconSize,
+    //         width: appbarIconSize,
+    //         child: imageAvatar(Image.network(globalLazySignIn.photoUrl)),
+    //       ));
+    //     }
+    //     return Row(
+    //       // mainAxisSize: MainAxisSize.min,
+    //       crossAxisAlignment: CrossAxisAlignment.center,
+    //       children: children,
+    //     );
+    //   },
+    // );
+    Widget widgetAvatar = const WidgetAvatar();
 
     List<Widget> actions = [];
     if (_menuOpen) {
@@ -127,7 +128,6 @@ class _Pin2Me extends State<Pin2Me> {
     AppBar appBar = AppBar(
       actions: actions,
       backgroundColor: Theme.of(context).backgroundColor.withOpacity(0.3),
-      // backgroundColor: Colors.transparent,
       foregroundColor: appBarTextColor,
       elevation: 0,
       leading: buttonAbout,
@@ -155,9 +155,9 @@ class _Pin2Me extends State<Pin2Me> {
       buildDraggableFeedback: _reorderableWarpFeedback,
       footer: spacer,
       header: [spacer],
-      onReorder: Provider.of<SiteWidgets>(context).reorder,
+      onReorder: Provider.of<WidgetSites>(context).reorder,
       runAlignment: WrapAlignment.start,
-      children: Provider.of<SiteWidgets>(context).list,
+      children: Provider.of<WidgetSites>(context).list,
     );
 
     return Scaffold(
@@ -194,6 +194,8 @@ class _Pin2Me extends State<Pin2Me> {
 
   void _syncErrorHandler() async {
     // Trigger setState to change color of the sync icon
+    String debugPrefix = '$runtimeType._syncErrorHandler()';
+    lazy.log(debugPrefix);
     setState(() {});
   }
 }

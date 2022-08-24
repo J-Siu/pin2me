@@ -9,5 +9,6 @@ export 'package:pin2me/app/share/share.dart';
 export 'package:provider/provider.dart';
 export 'package:theme_provider/theme_provider.dart';
 export 'pin2me.dart';
-export 'site_widget.dart';
-export 'site_widgets.dart';
+export 'widget_avatar.dart';
+export 'widget_site.dart';
+export 'widget_sites.dart';
