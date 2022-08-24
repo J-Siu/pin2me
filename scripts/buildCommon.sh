@@ -17,8 +17,8 @@ SRC_MAP="--source-maps"
 # --- fluttter build option - end
 
 DIR_SCRIPT=$(dirname -- "$0")
-DIR_EXT=$DIR_SCRIPT/ext
-DIR_WEB=$DIR_SCRIPT/web
+DIR_SCRIPT_EXT=$DIR_SCRIPT/ext
+DIR_SCRIPT_WEB=$DIR_SCRIPT/web
 
 function checkFlutterJs {
 	if [ ! -f build/web/flutter.js ]; then
@@ -33,14 +33,18 @@ function delCanvaskit {
 
 function prepExtChrome {
 	echo prepExtChrome
-	echo DIR_SCRIPT: $DIR_SCRIPT
-	cp $DIR_EXT/ext.manifest.chrome.json web/manifest.json
+	cp $DIR_SCRIPT_EXT/chrome/chrome.manifest.json web/manifest.json
+}
+
+function prepExtChromeTest {
+	echo prepExtChromeTest
+	cp $DIR_SCRIPT_EXT/chrome/chrome.test.manifest.json web/manifest.json
 }
 
 function prepExtMoz {
 	echo prepExtMoz
 	echo DIR_SCRIPT: $DIR_SCRIPT
-	cp $DIR_EXT/ext.manifest.moz.json web/manifest.json
+	cp $DIR_SCRIPT_EXT/moz/moz.manifest.json web/manifest.json
 }
 
 function prepExt {
@@ -48,9 +52,9 @@ function prepExt {
 	echo DIR_SCRIPT: $DIR_SCRIPT
 	if [ ! -f $DIR_SCRIPT/.current.ext ]; then
 		rm $DIR_SCRIPT/.current.*
-		cp $DIR_EXT/api.dart.ext lib/app/ui/api.dart
-		cp $DIR_EXT/ext.index.html web/index.html
-		cp $DIR_EXT/ext.pubspec.yaml pubspec.yaml
+		cp $DIR_SCRIPT_EXT/api.dart.ext lib/app/ui/api.dart
+		cp $DIR_SCRIPT_EXT/ext.index.html web/index.html
+		cp $DIR_SCRIPT_EXT/ext.pubspec.yaml pubspec.yaml
 		touch $DIR_SCRIPT/.current.ext
 	fi
 }
@@ -60,10 +64,10 @@ function prepWeb {
 	echo DIR_SCRIPT: $DIR_SCRIPT
 	if [ ! -f $DIR_SCRIPT/.current.web ]; then
 		rm $DIR_SCRIPT/.current.*
-		cp $DIR_WEB/web.manifest.json web/manifest.json
-		cp $DIR_WEB/api.dart.webapp lib/app/ui/api.dart
-		cp $DIR_WEB/web.index.html web/index.html
-		cp $DIR_WEB/web.pubspec.yaml pubspec.yaml
+		cp $DIR_SCRIPT_WEB/api.dart.webapp lib/app/ui/api.dart
+		cp $DIR_SCRIPT_WEB/web.index.html web/index.html
+		cp $DIR_SCRIPT_WEB/web.manifest.json web/manifest.json
+		cp $DIR_SCRIPT_WEB/web.pubspec.yaml pubspec.yaml
 		touch $DIR_SCRIPT/.current.web
 	fi
 }

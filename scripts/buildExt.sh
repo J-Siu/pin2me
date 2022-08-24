@@ -5,14 +5,16 @@ source $DIR_SCRIPT/buildCommon.sh
 
 APP_NAME=${PWD##*/}
 BASE_HREF="/"
-BUILD_OPTION="$RENDERER_HTML"
+BUILD_OPTION="$RENDERER_HTML $CSP $PROFILE"
 
 prepExt
-
-rm -rf build
+flutter clean
 
 prepExtChrome
 buildExt chrome
+
+prepExtChromeTest
+buildExt chrome.test
 
 prepExtMoz
 buildExt moz

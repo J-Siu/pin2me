@@ -14,7 +14,7 @@
 	"manifest_version": 3,
 	"name": "Pin2Me",
 	"oauth2": {
-		"client_id": "455194234164-csq92u7ldggmococsfnfnvl4lntpj0ae.apps.googleusercontent.com",
+		"client_id": "455194234164-4qc6qmqkvl9ik9cnbjl5k4qtkerq43h8.apps.googleusercontent.com",
 		"scopes": [
 			"https://www.googleapis.com/auth/userinfo.email"
 		]
@@ -23,5 +23,5 @@
 		"identity"
 	],
 	"short_name": "Pin2Me",
-	"version": "1.0.22"
+	"version": "1.0.23"
 }
