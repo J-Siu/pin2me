@@ -1,0 +1,12 @@
+- manifest.json CSP Removed: It is actually not required and properly left over from the early stage of development.
+
+- BUILD.md and Build scripts updated
+  - scripts/buildExt.sh will build both release and profile version
+  - tested with flesh clone from github in new directory
+
+- extension build steps
+  BUILD.md
+  -> [Build](#build)
+    -> [Extension](#extension)
+
+PS: first time 'flutter clean' error can be ignored.

@@ -49,7 +49,7 @@ cd pin2me
 Then:
 
 ```sh
-scripts/switchWeb.sh
+bash scripts/switchWeb.sh
 flutter clean
 flutter build web
 ```
@@ -73,7 +73,7 @@ Then:
 
 ```sh
 flutter clean
-scripts/buildExt.sh
+bash scripts/buildExt.sh
 ```
 
 PS: First time 'flutter clean' error can be ignored.

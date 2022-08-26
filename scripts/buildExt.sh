@@ -9,21 +9,21 @@ BASE_HREF="/"
 prepExt
 flutter clean
 
-# Build Prod
+# Build Chrome extension
 BUILD_OPTION="$RENDERER_HTML $CSP"
-
 prepExtChrome
 buildExt chrome
 
-prepExtMoz
-buildExt moz
-
-# Build Test
 BUILD_OPTION="$RENDERER_HTML $CSP $PROFILE"
-
 prepExtChromeTest
 buildExt chrome.profile
 
+# Build Firefox extension
+BUILD_OPTION="$RENDERER_HTML $CSP"
+prepExtMoz
+buildExt moz
+
+BUILD_OPTION="$RENDERER_HTML $CSP $PROFILE"
 prepExtMoz
 buildExt moz.profile
 
