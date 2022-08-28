@@ -72,11 +72,8 @@ cd pin2me
 Then:
 
 ```sh
-flutter clean
 bash scripts/buildExt.sh
 ```
-
-PS: First time 'flutter clean' error can be ignored.
 
 Target location:
 

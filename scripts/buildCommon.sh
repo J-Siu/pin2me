@@ -94,8 +94,8 @@ function extBuild {
 function extZip {
 	DIR_CUR=$PWD
 	DIR_TARGET=~/Downloads/${APP_NAME}/$1
-	cd ~/Downloads/${APP_NAME}
-	rm $1.zip
-	zip -r $1.zip $1
+	cd $DIR_TARGET
+	rm ../$1.zip
+	zip -r ../$1.zip *
 	cd $DIR_CUR
 }
