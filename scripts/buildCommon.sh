@@ -95,7 +95,10 @@ function extZip {
 	DIR_CUR=$PWD
 	DIR_TARGET=~/Downloads/${APP_NAME}/$1
 	cd $DIR_TARGET
-	rm ../$1.zip
+	rm -rf ../$1.zip
+	rm -rf .DS_Store
+	rm -rf */.DS_Store
+	rm -rf */*/.DS_Store
 	zip -r ../$1.zip *
 	cd $DIR_CUR
 }
