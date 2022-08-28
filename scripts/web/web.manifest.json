@@ -8,7 +8,7 @@
 	"prefer_related_applications": false,
 	"short_name": "Pin2Me",
 	"start_url": ".",
-	"version": "1.0.24",
+	"version": "1.0.25",
 	"icons": [
 		{
 			"src": "icons/pin2me-128.png",

@@ -1,3 +1,6 @@
+- 1.0.25
+  - Fix sync fail with multi-byte(non-English) site name
+  - update build instruction
 - 1.0.24
   - Firefox extension manifest.json clean up
 - 1.0.23

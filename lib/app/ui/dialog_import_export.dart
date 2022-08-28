@@ -3,6 +3,7 @@ import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lazy_collection/lazy_collection.dart' as lazy;
+import 'package:lazy_extensions/lazy_extensions.dart' as lazy;
 import 'package:lazy_log/lazy_log.dart' as lazy;
 import 'ui.dart';
 
@@ -54,7 +55,7 @@ class _DialogImportExport extends State<DialogImportExport> {
     );
     Widget buttonSave = TextButton(
       onPressed: () {
-        download(ctrlSetting.text.codeUnits, downloadName: 'Pin2Me.json');
+        download(ctrlSetting.text.toUtf8(), downloadName: 'Pin2Me.json');
       },
       child: const Text('Save'),
     );
