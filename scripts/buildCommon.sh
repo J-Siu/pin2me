@@ -72,7 +72,7 @@ function prepWeb {
 	fi
 }
 
-function buildExt {
+function extBuild {
 	DIR_TARGET=~/Downloads/${APP_NAME}/$1
 
 	echo "BUILD OPTION: web --base-href=$BASE_HREF $BUILD_OPTION"
@@ -89,4 +89,13 @@ function buildExt {
 	rm ${DIR_TARGET}/flutter.js
 	rm ${DIR_TARGET}/flutter_service_worker.js
 	rm -rf ${DIR_TARGET}/canvaskit
+}
+
+function extZip {
+	DIR_CUR=$PWD
+	DIR_TARGET=~/Downloads/${APP_NAME}/$1
+	cd ~/Downloads/${APP_NAME}
+	rm $1.zip
+	zip -r $1.zip $1
+	cd $DIR_CUR
 }

@@ -9,23 +9,25 @@ BASE_HREF="/"
 prepExt
 flutter clean
 
-# Build Chrome extension
+# Build extension for release
 BUILD_OPTION="$RENDERER_HTML $CSP"
 prepExtChrome
-buildExt chrome
+extBuild chrome
+extZip chrome
 
-BUILD_OPTION="$RENDERER_HTML $CSP $PROFILE"
-prepExtChromeTest
-buildExt chrome.profile
-
-# Build Firefox extension
 BUILD_OPTION="$RENDERER_HTML $CSP"
 prepExtMoz
-buildExt moz
+extBuild moz
+extZip moz
+
+# Build extension for debug/profiling
+BUILD_OPTION="$RENDERER_HTML $CSP $PROFILE"
+prepExtChromeTest
+extBuild chrome.profile
 
 BUILD_OPTION="$RENDERER_HTML $CSP $PROFILE"
 prepExtMoz
-buildExt moz.profile
+extBuild moz.profile
 
 # switch back to web
 prepWeb
