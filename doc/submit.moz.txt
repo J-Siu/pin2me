@@ -1,12 +1,11 @@
-- manifest.json CSP Removed: It is actually not required and properly left over from the early stage of development.
+Unzip source and go into source root(`pin2me`):
 
-- BUILD.md and Build scripts updated
-  - scripts/buildExt.sh will build both release and profile version
-  - tested with flesh clone from github in new directory
+```sh
+cd pin2me
+bash scripts/buildExt.sh
+```
 
-- extension build steps
-  BUILD.md
-  -> [Build](#build)
-    -> [Extension](#extension)
+Release(for submission) target will be located at: ~/Downloads/pin2me/ext/moz
+Zip file for submission location: ~/Downloads/pin2me/ext/moz.ext.zip
 
-PS: first time 'flutter clean' error can be ignored.
+Detail build and testing steps for Firefox extension: doc/BUILD.ext.moz.md

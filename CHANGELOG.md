@@ -1,3 +1,5 @@
+- 1.0.26
+  - update build instruction
 - 1.0.25
   - Fix sync fail with multi-byte(non-English) site name
   - update build instruction

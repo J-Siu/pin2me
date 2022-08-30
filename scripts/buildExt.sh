@@ -3,7 +3,6 @@
 DIR_SCRIPT=$(dirname -- "$0")
 source $DIR_SCRIPT/buildCommon.sh
 
-APP_NAME=${PWD##*/}
 BASE_HREF="/"
 
 prepExt

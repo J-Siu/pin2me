@@ -17,9 +17,9 @@ Pin website to New Tab page from any device, any browser! Support Import/Export 
     - [Remove One by One](#remove-one-by-one)
     - [Remove All](#remove-all)
 - [Planned](#planned)
-- [Issue](#issue)
 - [Build](#build)
 - [Repository](#repository)
+- [Known Issue](#known-issue)
 - [Contributors](#contributors)
 - [Change Log](#change-log)
 - [Library](#library)
@@ -97,18 +97,26 @@ Pin2Me comes with a few preset sites. Their URLs and names cannot be change, but
 - More platforms
 - Extension support web page context menu
 
-### Issue
-- Firefox
-  - #2 Extension showing a extension url in address bar
-  - Add-on not activating on first tab
-
 ### Build
 
-- [BUILD.md](BUILD.md)
+Platform|File
+---|---
+Chrome Extension|[doc/BUILD.ext.chrome.md](doc/BUILD.ext.chrome.md)
+Firefox Extension|[doc/BUILD.ext.moz.md](doc/BUILD.ext.moz.md)
+Web|[doc/BUILD.web.md](doc/BUILD.web.md)
 
 ### Repository
 
 - [pin2me](https://github.com/J-Siu/pin2me/)
+
+```sh
+git clone https://github.com/J-Siu/pin2me
+```
+
+### Known Issue
+- Firefox
+  - #2 Extension showing a extension url in address bar
+  - Add-on not activate on first tab
 
 ### Contributors
 
