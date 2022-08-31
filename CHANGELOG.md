@@ -1,3 +1,5 @@
+- 1.0.27
+  - Add Orion browser support
 - 1.0.26
   - update build instruction
 - 1.0.25

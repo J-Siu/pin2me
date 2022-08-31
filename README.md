@@ -42,12 +42,12 @@ Pin website to New Tab page from any device, any browser! Support Import/Export 
 
 ### Platform
 
-Platform|URL
+Platform|Link
 ---|---
 Web|https://pin2me.dev/
 Demo|https://j-siu.github.io/app/pin2me.dev/
-Chrome Extension|https://chrome.google.com/webstore/detail/pin2me/hclokpdkmfceobbckckjkdohdgeljlld
-Firefox Extension|https://addons.mozilla.org/en-US/firefox/addon/pin2me/
+Chrome Extension|[Chrome Web Store](https://chrome.google.com/webstore/detail/pin2me/hclokpdkmfceobbckckjkdohdgeljlld)
+Firefox Extension|[Firefox Add-On](https://addons.mozilla.org/en-US/firefox/addon/pin2me/)
 
 ### Usage
 

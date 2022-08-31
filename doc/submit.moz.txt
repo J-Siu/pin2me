@@ -1,4 +1,14 @@
-Unzip source and go into source root(`pin2me`):
+Environment Requirements
+========================
+
+- Pin2Me is developed in Dart/Flutter. Install Flutter: https://docs.flutter.dev/get-started/install
+- Build scripts are written in bash and only work in Linux/MaxOS.
+- `zip` command for build script to create zip file for submission
+
+Quick Start
+===========
+
+Unzip source and go into source root (assume `pin2me`):
 
 ```sh
 cd pin2me
@@ -6,6 +16,9 @@ bash scripts/buildExt.sh
 ```
 
 Release(for submission) target will be located at: ~/Downloads/pin2me/ext/moz
-Zip file for submission location: ~/Downloads/pin2me/ext/moz.ext.zip
+Zip file for submission will be located at: ~/Downloads/pin2me/ext/moz.ext.zip
+
+Detail Steps
+============
 
 Detail build and testing steps for Firefox extension: doc/BUILD.ext.moz.md
