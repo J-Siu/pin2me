@@ -14,12 +14,12 @@ class OptionService extends JsonPreferenceNotify {
     load();
   }
 
-  bool debugLog = false;
+  bool debugLog = globalDefaultDebug;
 
   bool get debug {
     String name = _OptionServiceField.debug;
     if (obj[name] == null) {
-      debug = false;
+      debug = globalDefaultDebug;
     }
     return obj[name];
   }
