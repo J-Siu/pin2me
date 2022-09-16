@@ -27,6 +27,7 @@ cp -r build/web/* ${DIR_TARGET}/${APP_NAME}/
 
 # Push to github.io
 cd ${DIR_DEMO}
+rm -rf .DS_Store */.DS_Store */*/.DS_Store
 git pull gh main
 git add .
 git commit -m "update ${APP_NAME}"
