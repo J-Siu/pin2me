@@ -5,7 +5,7 @@ import 'package:pin2me/app/ui/ui.dart';
 
 void main() async {
   String debugPrefix = 'main()';
-  lazy.logEnable = true;
+  lazy.logEnable = globalDefaultDebug;
   lazy.log('$debugPrefix:uri.base:${Uri.base}', forced: true);
   lazy.log('$debugPrefix:uri.base.scheme:${Uri.base.scheme}', forced: true);
 
@@ -27,9 +27,10 @@ void main() async {
   await globalOptionService.load();
   lazy.logEnable = globalOptionService.debug;
   if (globalOptionService.gSync) {
-    await globalLazySignIn.signInHandler();
-    globalLazyGSync.enableLocalSaveNotifier = globalOptionService.gSync;
-    globalLazyGSync.enableAutoSync = globalOptionService.gSyncAuto;
+    globalLazySignIn.signInHandler().then((value) {
+      globalLazyGSync.enableLocalSaveNotifier = globalOptionService.gSync;
+      globalLazyGSync.enableAutoSync = globalOptionService.gSyncAuto;
+    });
     // lazy.log(
     //     '$debugPrefix:globalLazySignIn.msg.value.status:${globalLazySignIn.msg.value.status}',
     //     forced: true);
