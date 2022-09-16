@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lazy_collection/lazy_collection.dart' as lazy;
-// import 'package:lazy_sign_in/lazy_sign_in.dart' as lazy;
 import 'ui/ui.dart';
 
 class MyApp extends StatelessWidget {
@@ -14,8 +13,6 @@ class MyApp extends StatelessWidget {
         ListenableProvider.value(value: globalOptionUI),
         ListenableProvider.value(value: globalWidgetSites),
         ListenableProvider.value(value: globalSites),
-        // ValueListenableProvider<lazy.SignInMsg>.value(
-        //     value: globalLazySignIn.msg),
         Provider(
             create: (_) => [TextEditingController(), TextEditingController()]),
       ],
