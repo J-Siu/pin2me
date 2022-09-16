@@ -1,3 +1,5 @@
+- 1.0.28
+  - Fix #3, blank page
 - 1.0.27
   - Add Orion browser support
 - 1.0.26

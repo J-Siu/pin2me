@@ -50,7 +50,7 @@ PS: `buildExt.sh` builds both Chrome and Firefox release and profile targets.
 
 ### Testing
 
-PS: Open 2nd tab load addon. It is known issue on Firefox for this addon.
+PS: First tab will be empty or Firefox default page. Open 2nd tab to activate addon. It is known issue on Firefox for this addon.
 
 Test release version:
 ```sh
