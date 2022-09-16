@@ -22,6 +22,7 @@ rm -rf ${DIR_TARGET}/${APP_NAME}
 # mkdir target location
 mkdir -p ${DIR_TARGET}/${APP_NAME}
 # cp to target location
+echo "copy from build/web/* to ${DIR_TARGET}/${APP_NAME}/"
 cp -r build/web/* ${DIR_TARGET}/${APP_NAME}/
 
 # Push to github.io
