@@ -5,7 +5,7 @@ homepage: https://johnsiu.com/app/pin2me/
 # issue_tracker:
 publish_to: 'none'
 # repository:
-version: 1.0.28
+version: 1.1.0
 
 environment:
   sdk: ">=2.17.6 <3.0.0"
@@ -16,15 +16,15 @@ dependencies:
   http: ^0.13.5
   json_preferences: ^1.0.2
   lazy_cache: ^1.0.1
-  lazy_collection: ^0.4.5
-  lazy_extensions: ^1.0.2
+  lazy_collection: ^0.4.6
+  lazy_extensions: ^1.0.3
   lazy_g_drive: ^1.0.1
   lazy_g_sync: ^1.1.2
   lazy_log: ^1.0.7
   lazy_sign_in: ^1.1.1
   lazy_sign_in_extension: ^1.1.2
   provider: ^6.0.3
-  reorderables: ^0.5.0
+  reorderables: ^0.6.0
   theme_provider: ^0.5.0
 
 dev_dependencies:
