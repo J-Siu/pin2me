@@ -12,7 +12,7 @@ void main() async {
   globalLazyAbout.author = 'By: John Siu';
   globalLazyAbout.blog = 'JSiu.Dev';
   globalLazyAbout.blogUrl = 'https://jsiu.dev/';
-  globalLazyAbout.copyright = 'Copyright © 2022';
+  globalLazyAbout.copyright = 'Copyright © 2023';
   globalLazyAbout.license = 'MIT License';
   globalLazyAbout.privacyPolicyUrl =
       'https://johnsiu.com/privacy_policy/pin2me/';
