@@ -17,6 +17,7 @@ class _Pin2Me extends State<Pin2Me> {
   bool _menuOpen = false;
   bool debugLog = false;
   final int minSyncSpinningSeconds = 10;
+  ScrollController scrollController = ScrollController();
 
   @override
   void initState() {
@@ -127,7 +128,8 @@ class _Pin2Me extends State<Pin2Me> {
     var appBarTextColor = Theme.of(context).textTheme.bodyLarge?.color;
     AppBar appBar = AppBar(
       actions: actions,
-      backgroundColor: Theme.of(context).backgroundColor.withOpacity(0.3),
+      backgroundColor:
+          Theme.of(context).colorScheme.background.withOpacity(0.3),
       foregroundColor: appBarTextColor,
       elevation: 0,
       leading: buttonAbout,
@@ -157,6 +159,7 @@ class _Pin2Me extends State<Pin2Me> {
           header: [spacer],
           onReorder: Provider.of<WidgetSites>(context).reorder,
           runAlignment: WrapAlignment.start,
+          controller: scrollController,
           children: Provider.of<WidgetSites>(context).list,
         );
 
@@ -165,10 +168,10 @@ class _Pin2Me extends State<Pin2Me> {
       children.addAll(Provider.of<WidgetSites>(context).list);
       children.add(spacer);
       return SingleChildScrollView(
+        controller: scrollController,
         child: Wrap(
           alignment: WrapAlignment.center,
           runAlignment: WrapAlignment.start,
-          // children: Provider.of<WidgetSites>(context).list,
           children: children,
         ),
       );
@@ -187,6 +190,7 @@ class _Pin2Me extends State<Pin2Me> {
       appBar: appBar,
       extendBodyBehindAppBar: true,
       body: Scrollbar(
+        controller: scrollController,
         child: ScrollConfiguration(
           behavior: ScrollConfiguration.of(context).copyWith(
             physics: const ClampingScrollPhysics(),
