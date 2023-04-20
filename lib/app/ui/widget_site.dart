@@ -89,7 +89,7 @@ class WidgetSite extends StatelessWidget {
       // Icon frame/background
       borderRadius: lazy.borderRadius(10),
       child: Container(
-        color: Theme.of(context).backgroundColor,
+        color: Theme.of(context).colorScheme.background,
         height: iconFrameSize,
         width: iconFrameSize,
         child: Center(
