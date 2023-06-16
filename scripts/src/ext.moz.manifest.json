@@ -1,5 +1,10 @@
 {
 	"author": "JSiu.Dev",
+	"browser_specific_settings": {
+		"gecko": {
+			"id": "pin2me@jsiu.dev"
+		}
+	},
 	"chrome_url_overrides": {
 		"newtab": "index.html"
 	},
@@ -13,15 +18,9 @@
 	},
 	"manifest_version": 3,
 	"name": "Pin2Me",
-	"oauth2": {
-		"client_id": "455194234164-4qc6qmqkvl9ik9cnbjl5k4qtkerq43h8.apps.googleusercontent.com",
-		"scopes": [
-			"https://www.googleapis.com/auth/userinfo.email"
-		]
-	},
 	"permissions": [
 		"identity"
 	],
 	"short_name": "Pin2Me",
-	"version": "1.1.0"
+	"version": "2.0.0"
 }

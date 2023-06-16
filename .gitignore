@@ -1,7 +1,7 @@
 TODO.md
 lib/app/ui/api.dart
 pubspec.lock
-pubspec.yaml
+/pubspec.yaml
 scripts/.current.*
 web/index.html
 web/manifest.json

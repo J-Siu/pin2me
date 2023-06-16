@@ -40,7 +40,7 @@ flutter build web
 Target location:
 - `<source root>/build/web`
 
-PS: Do not use `buildSiteDemo.sh` and `buildSiteProd.sh` as they are specific for author's environment/sites only.
+PS: Do not use `buildWebDemo.sh` and `buildWebProd.sh` as they are specific for author's environment/sites only.
 
 ### Testing
 

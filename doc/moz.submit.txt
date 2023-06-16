@@ -12,13 +12,15 @@ Unzip source and go into source root (assume `pin2me`):
 
 ```sh
 cd pin2me
-bash scripts/buildExt.sh
+bash scripts/buildExtMoz.sh
+bash scripts/buildExtMozTest.sh
 ```
 
-Release(for submission) target will be located at: ~/Downloads/pin2me/ext/moz
-Zip file for submission will be located at: ~/Downloads/pin2me/ext/moz.ext.zip
+Profile/Test target at: ~/Downloads/pin2me/ext.moz
+Release(for submission) target at: ~/Downloads/pin2me/ext.moz
+Zip file for submission will be located at: ~/Downloads/pin2me/ext.moz.zip
 
 Detail Steps
 ============
 
-Detail build and testing steps for Firefox extension: doc/BUILD.ext.moz.md
+Detail build and testing steps for Firefox extension: doc/BUILD.ext.md

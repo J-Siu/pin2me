@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:lazy_collection/lazy_collection.dart' as lazy;
-import 'package:lazy_log/lazy_log.dart' as lazy;
+import 'package:lazy_ui_utils/lazy_ui_utils.dart' as lazy;
 import 'ui.dart';
 
 void dialogSetting(BuildContext context) {
@@ -26,55 +24,22 @@ void dialogSetting(BuildContext context) {
     );
 
     Widget content(
-        BuildContext context, OptionService optionService, Widget? child) {
-      String debugPrefix = 'content()';
-
-      //Complex logic for turning sync on and off
-      void syncOnToggle(BuildContext context, {required bool enable}) async {
+      BuildContext context,
+      OptionService optionService,
+      Widget? child,
+    ) {
+      void onToggleSignIn(BuildContext context, {required bool enable}) async {
         if (enable) {
           try {
-            // enable(true) sync start
-            var gFiles = await globalLazyGSync.remoteFiles();
-            // globalLazyGSync.remoteFiles().then((gFiles) {
-            if (globalSites.isEmpty || globalSites.presetOnly) {
-              // local save empty or preset only
-              lazy.log('$debugPrefix:local empty/preset only -> set enable');
-              settingTurnOnGSync();
-              if (gFiles.isNotEmpty) {
-                lazy.log(
-                    '$debugPrefix:local empty/preset only, remote not empty -> download');
-                gSync.sync(forceDownload: true);
-              }
-            } else {
-              lazy.log('$debugPrefix:local not empty');
-              if (gFiles.isEmpty) {
-                // Have local save, no remote save -> set option -> do first upload
-                lazy.log(
-                    '$debugPrefix:local not empty, remote empty -> set enable -> upload');
-                settingTurnOnGSync();
-              } else {
-                lazy.log(
-                    '$debugPrefix:local and remote not empty -> ask before enable');
-                // Delay sync option to next dialog
-                var lastSaveLocal = globalSites.lastSaveTime;
-                globalLazyGSync.remoteLastSaveTime(gFiles).then(
-                      (lastSaveRemote) => dialogSyncEnable(
-                        context,
-                        lastSaveLocal,
-                        lastSaveRemote,
-                      ),
-                    );
-              }
-            }
+            globalOptionService.gSignIn = true;
+            globalLazySignIn.signIn();
           } catch (e) {
             ScaffoldMessenger.of(context)
                 .showSnackBar(SnackBar(content: Text('Sign-In error: $e')));
           }
-
-          // enable(true) sync end
         } else {
-          settingTurnOffGSync();
-          globalLazySignIn.signOutHandler();
+          globalOptionService.gSignIn = false;
+          globalLazySignIn.signOut();
         }
       }
 
@@ -124,24 +89,24 @@ void dialogSetting(BuildContext context) {
         type: lazy.SwitchType.onOff,
         value: optionUI.lock,
       ));
-      // Google Sync
+      // Google Sign In
       lazyLabeledSwitches.add(lazy.LabeledSwitch(
-        name: 'Google Drive Sync',
+        name: 'Google Sign In',
         lazySwitch: lazySwitch,
-        onToggle: (enable) => syncOnToggle(context, enable: enable),
+        onToggle: (enable) => onToggleSignIn(context, enable: enable),
         type: lazy.SwitchType.onOff,
-        value: optionService.gSync,
+        value: optionService.gSignIn,
       ));
       // Google Sync Auto
       lazyLabeledSwitches.add(lazy.LabeledSwitch(
-        disabled: !optionService.gSync,
+        disabled: !optionService.gSignIn,
         name: 'Auto Sync',
         lazySwitch: lazySwitch,
         onToggle: (v) {
-          optionService.gSyncAuto = gSync.enableAutoSync = v;
+          optionService.autoSync = gSync.auto = v;
         },
         type: lazy.SwitchType.onOff,
-        value: optionService.gSyncAuto,
+        value: optionService.autoSync,
       ));
 
       return Consumer<OptionService>(builder: (context, _, __) {

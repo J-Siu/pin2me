@@ -1,8 +1,6 @@
 // ignore_for_file: invalid_use_of_protected_member
-
 import 'ui.dart';
-import 'package:lazy_collection/lazy_collection.dart' as lazy;
-import 'package:flutter/material.dart';
+import 'package:lazy_ui_utils/lazy_ui_utils.dart' as lazy;
 
 void dialogSite(
   BuildContext context, {

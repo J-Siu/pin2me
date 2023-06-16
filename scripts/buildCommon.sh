@@ -1,4 +1,9 @@
 SCRIPT_BUILD_COMMON="scripts/buildCommon.sh"
+DIR_SCRIPT_SRC=$DIR_SCRIPT/src
+APP_NAME=${PWD##*/}
+LOG_END="- End"
+# Use local flutter_lazy library if LOCAL=".local"
+# LOCAL=".local"
 
 # --- flutter build option - start
 # Bundle canvaskit
@@ -18,26 +23,56 @@ RENDERER_HTML='--web-renderer html'
 SRC_MAP="--source-maps"
 # --- fluttter build option - end
 
-APP_NAME=${PWD##*/}
-
 function checkFlutterJs {
-	echo === $SCRIPT_BUILD_COMMON: checkFlutterJs
+	local LOG_PREFIX="=== $SCRIPT_BUILD_COMMON:checkFlutterJs"
+	echo $LOG_PREFIX
 	if [ ! -f build/web/flutter.js ]; then
 		echo flutter.js missing. run 'flutter clean'.
 		exit 1
 	fi
-	echo === $SCRIPT_BUILD_COMMON: checkFlutterJs - End
+	echo $LOG_PREFIX $LOG_END
 }
 
 function delCanvaskit {
-	echo === $SCRIPT_BUILD_COMMON: delCanvaskit
+	local LOG_PREFIX="=== $SCRIPT_BUILD_COMMON:delCanvaskit"
+	echo $LOG_PREFIX
 	rm -rf build/web/canvaskit
-	echo === $SCRIPT_BUILD_COMMON: delCanvaskit - End
+	echo $LOG_PREFIX $LOG_END
 }
 
 function delFlutterJs {
-	echo === $SCRIPT_BUILD_COMMON: delFlutterJs
+	local LOG_PREFIX="=== $SCRIPT_BUILD_COMMON:delFlutterJs"
+	echo $LOG_PREFIX
 	rm -rf build/web/flutter.js
 	rm -rf build/web/flutter_service_worker.js
-	echo === $SCRIPT_BUILD_COMMON: delFlutterJs - End
+	echo $LOG_PREFIX $LOG_END
+}
+
+# Prepare source tree base on build type
+# $1 = BUILD_TYPE:
+#		ext.chrome      = chrome extension
+#		ext.chrome.test = chrome extension for test
+#		ext.moz         = filefox extension
+#		web             = webapp
+function prepSrc {
+	BUILD_TYPE=$1
+	local LOG_PREFIX="=== $SCRIPT_BUILD_COMMON:prepSrc $BUILD_TYPE $LOCAL"
+	echo $LOG_PREFIX
+	FILE_API="$BUILD_TYPE.api"
+	FILE_INDEX="$BUILD_TYPE.index.html"
+	FILE_LOCK=".current.$1$LOCAL"
+	FILE_MANIFEST="$BUILD_TYPE.manifest.json"
+	FILE_PUBSPEC="$BUILD_TYPE.pubspec$LOCAL.yaml"
+	if [ ! -f $DIR_SCRIPT/$FILE_LOCK ]; then
+		flutter clean
+		cp $DIR_SCRIPT_SRC/$FILE_API lib/app/ui/api.dart
+		cp $DIR_SCRIPT_SRC/$FILE_INDEX web/index.html
+		cp $DIR_SCRIPT_SRC/$FILE_MANIFEST web/manifest.json
+		cp $DIR_SCRIPT_SRC/$FILE_PUBSPEC pubspec.yaml
+		rm $DIR_SCRIPT/.current.*
+		touch $DIR_SCRIPT/$FILE_LOCK
+		rm pubspec.lock
+		flutter pub get
+	fi
+	echo $LOG_PREFIX $LOG_END
 }

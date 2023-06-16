@@ -3,9 +3,9 @@ import 'share.dart';
 const String defaultKeyOptionService = 'OptionService';
 
 class _OptionServiceField {
+  static const String autoSync = 'autoSync';
   static const String debug = 'debug';
-  static const String gSync = 'gSync';
-  static const String gSyncAuto = 'gSyncAuto';
+  static const String gSignIn = 'gSignIn';
 }
 
 class OptionService extends JsonPreferenceNotify {
@@ -14,59 +14,49 @@ class OptionService extends JsonPreferenceNotify {
     load();
   }
 
-  bool debugLog = globalDefaultDebug;
+  bool _get(String name) {
+    if (obj[name] == null) {
+      obj[name] = false;
+    }
+    return obj[name];
+  }
+
+  _set(String name, bool v) {
+    if (obj[name] == null || obj[name] != v) {
+      obj[name] = v;
+      save(debugMsg: '$runtimeType.$name:$v');
+      notifyListeners();
+    }
+  }
 
   bool get debug {
     String name = _OptionServiceField.debug;
-    if (obj[name] == null) {
-      debug = globalDefaultDebug;
-    }
-    return obj[name];
+    return _get(name);
+  }
+
+  bool get gSignIn {
+    String name = _OptionServiceField.gSignIn;
+    return _get(name);
+  }
+
+  bool get autoSync {
+    String name = _OptionServiceField.autoSync;
+    return _get(name);
   }
 
   set debug(bool v) {
     String name = _OptionServiceField.debug;
-    if (obj[name] == null || obj[name] != v) {
-      obj[name] = v;
-      save(debugMsg: '$runtimeType.$name:$v');
-      notifyListeners();
-    }
+    _set(name, v);
   }
 
-  bool get gSync {
-    String name = _OptionServiceField.gSync;
-    if (obj[name] == null) {
-      gSync = false;
-    }
-    return obj[name];
+  set gSignIn(bool v) {
+    String name = _OptionServiceField.gSignIn;
+    _set(name, v);
   }
 
-  set gSync(bool v) {
-    String name = _OptionServiceField.gSync;
-    if (obj[name] == null || obj[name] != v) {
-      obj[name] = v;
-      save(debugMsg: '$runtimeType.$name:$v');
-      if (!v) gSyncAuto = false;
-      notifyListeners();
-    }
-  }
-
-  /// [gSyncAuto] can only be `true` while [gSync] is `true`
-  bool get gSyncAuto {
-    String name = _OptionServiceField.gSyncAuto;
-    if (obj[name] == null) {
-      gSyncAuto = false;
-    }
-    return obj[name];
-  }
-
-  set gSyncAuto(bool v) {
-    String name = _OptionServiceField.gSyncAuto;
-    bool value = v && gSync;
-    if (obj[name] == null || obj[name] != value) {
-      obj[name] = value;
-      save(debugMsg: '$runtimeType.$name:$value');
-      notifyListeners();
-    }
+  /// [autoSync] can only be `true` while [gSync] is `true`
+  set autoSync(bool v) {
+    String name = _OptionServiceField.autoSync;
+    _set(name, v);
   }
 }

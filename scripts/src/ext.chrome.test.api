@@ -1,0 +1,13 @@
+// ext.chrome.test.api(.dart)
+
+import 'package:lazy_sign_in_extension/lazy_sign_in_extension.dart' as lazy;
+
+typedef Api = lazy.SignInExtChrome;
+
+// Chrome extension use client_id in manifest.json
+const String apiClientId = '';
+
+const apiScopes = [
+  'email',
+  'https://www.googleapis.com/auth/drive.appdata',
+];

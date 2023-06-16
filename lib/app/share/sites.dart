@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:lazy_collection/lazy_collection.dart' as lazy;
+import 'package:lazy_extensions/lazy_extensions.dart' as lazy;
 import 'package:lazy_log/lazy_log.dart' as lazy;
 import 'share.dart';
 
@@ -295,7 +295,8 @@ class Sites extends JsonPreferenceNotify {
     String debugPrefix = '$runtimeType.import()';
     try {
       var setting = jsonDecode(string);
-      lazy.log('$debugPrefix:${lazy.jsonPretty(setting)}');
+      // lazy.log('$debugPrefix:${lazy.jsonPretty(setting)}');
+      lazy.log('$debugPrefix:${setting.jsonPretty()}');
       noSave(() {
         for (var s in setting) {
           if (s[SiteBaseFields.name] != null && s[SiteBaseFields.url] != null) {

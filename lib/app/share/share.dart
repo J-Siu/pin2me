@@ -6,5 +6,3 @@ export 'site_base.dart';
 export 'sites.dart';
 export 'sites_msg.dart';
 export 'sites_preset.dart';
-
-bool globalDefaultDebug = false;

@@ -18,59 +18,51 @@ class OptionUI extends JsonPreferenceNotify {
   @override
   Future load({bool forced = false}) async {
     await super.load(forced: forced);
-    lazy.log('$runtimeType.load()', forced: debugLog);
+    lazy.log('$runtimeType.load()');
   }
 
-  bool debugLog = false;
+  bool _get(String name) {
+    if (obj[name] == null) {
+      obj[name] = false;
+    }
+    return obj[name];
+  }
+
+  _set(String name, bool v) {
+    if (obj[name] == null || obj[name] != v) {
+      obj[name] = v;
+      save(debugMsg: '$runtimeType.$name:$v');
+      notifyListeners();
+    }
+  }
 
   bool get showName {
     String name = _OptionUIField.showName;
-    if (obj[name] == null) {
-      obj[name] = true;
-    }
-    return obj[name];
+    return _get(name);
   }
 
   set showName(bool v) {
     String name = _OptionUIField.showName;
-    if (obj[name] == null || obj[name] != v) {
-      obj[name] = v;
-      save(debugMsg: '$runtimeType.$name:$v');
-      notifyListeners();
-    }
+    _set(name, v);
   }
 
   bool get largeIcon {
     String name = _OptionUIField.largeIcon;
-    if (obj[name] == null) {
-      obj[name] = false;
-    }
-    return obj[name];
+    return _get(name);
   }
 
   set largeIcon(bool v) {
     String name = _OptionUIField.largeIcon;
-    if (obj[name] == null || obj[name] != v) {
-      obj[name] = v;
-      save(debugMsg: '$runtimeType.$name:$v');
-      notifyListeners();
-    }
+    _set(name, v);
   }
 
   bool get lock {
     String name = _OptionUIField.lock;
-    if (obj[name] == null) {
-      obj[name] = false;
-    }
-    return obj[name];
+    return _get(name);
   }
 
   set lock(bool v) {
     String name = _OptionUIField.lock;
-    if (obj[name] == null || obj[name] != v) {
-      obj[name] = v;
-      save(debugMsg: '$runtimeType.$name:$v');
-      notifyListeners();
-    }
+    _set(name, v);
   }
 }

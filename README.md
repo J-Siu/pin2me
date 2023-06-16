@@ -1,7 +1,9 @@
 # Pin2Me [![Paypal donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/donate/?business=HZF49NM9D35SJ&no_recurring=0&currency_code=CAD)
 
 Pin website to New Tab page from any device, any browser! Support Import/Export without sign-in.
+
 ### Table Of Content
+
 <!-- TOC -->
 
 - [Table Of Content](#table-of-content)
@@ -42,12 +44,12 @@ Pin website to New Tab page from any device, any browser! Support Import/Export 
 
 ### Platform
 
-Platform|Link
----|---
-Web|https://pin2me.dev/
-Demo|https://j-siu.github.io/app/pin2me/
-Chrome Extension|[Chrome Web Store](https://chrome.google.com/webstore/detail/pin2me/hclokpdkmfceobbckckjkdohdgeljlld)
-Firefox Extension|[Firefox Add-On](https://addons.mozilla.org/en-US/firefox/addon/pin2me/)
+| Platform          | Link                                                                                               |
+| ----------------- | -------------------------------------------------------------------------------------------------- |
+| Web               | https://pin2me.dev/                                                                                |
+| Demo              | https://demo.pin2me.dev/                                                                |
+| Chrome Extension  | [Chrome Web Store](https://chrome.google.com/webstore/detail/pin2me/hclokpdkmfceobbckckjkdohdgeljlld) |
+| Firefox Extension | [Firefox Add-On](https://addons.mozilla.org/en-US/firefox/addon/pin2me/)                              |
 
 ### Usage
 
@@ -61,7 +63,9 @@ Google Login(optional) enable following
   - For browsers/devices don't support add-on/extension
 
 #### Import/Export
+
 ##### Support
+
 - Apply setting from editor box
 - Copy to clipboard
 - Save to file (Pin2Me.json)
@@ -70,12 +74,14 @@ Google Login(optional) enable following
   - No upload to other server. This is the same when using https://pin2me.dev/ .
 
 ##### Access
+
 1. Click 3-dot icon on upper right to expand menu items
 2. Click setting icon
 3. Click 'Advance' in pop-up dialog
 4. Click 'Import/Export' button
 
 ##### Import
+
 1. Open Pin2Me.json with text editor
 2. Copy and paste content into Import/Export editor box
 3. Click 'Apply'.
@@ -83,27 +89,31 @@ Google Login(optional) enable following
 #### Preset Sites
 
 Pin2Me comes with a few preset sites. Their URLs and names cannot be change, but can moved and removed. To remove them:
+
 ##### Remove One by One
+
 - Double click to open site setting
 - Click 'Delete'
+
 ##### Remove All
+
 1. Click 3-dot icon on upper right to expand menu items
 2. Click setting icon
 3. Click 'Advance' in pop-up dialog
 4. Click 'Remove Default Sites'
 
 ### Planned
+
 - Drag & Drop for import
 - More platforms
 - Extension support web page context menu
 
 ### Build
 
-Platform|File
----|---
-Chrome Extension|[doc/BUILD.ext.chrome.md](doc/BUILD.ext.chrome.md)
-Firefox Extension|[doc/BUILD.ext.moz.md](doc/BUILD.ext.moz.md)
-Web|[doc/BUILD.web.md](doc/BUILD.web.md)
+| Platform                 | File                                            |
+| ------------------------ | ----------------------------------------------- |
+| Chrome/Firefox Extension | [doc/BUILD.ext.md](doc/BUILD.ext.md) |
+| Web                      | [doc/BUILD.web.md](doc/BUILD.web.md)               |
 
 ### Repository
 
@@ -114,6 +124,7 @@ git clone https://github.com/J-Siu/pin2me
 ```
 
 ### Known Issue
+
 - Firefox
   - #2 Extension showing a extension url in address bar
   - Add-on not activate on first tab
@@ -125,22 +136,23 @@ git clone https://github.com/J-Siu/pin2me
 ### Change Log
 
 - [CHANGELOG.md](CHANGELOG.md)
+
 ### Library
 
-Library|Source|Pub.Dev
----|---|---
-json_preferences|https://github.com/J-Siu/flutter_lazy|https://pub.dev/packages/json_preferences
-lazy_cache|https://github.com/J-Siu/flutter_lazy|https://pub.dev/packages/lazy_cache
-lazy_collection|https://github.com/J-Siu/flutter_lazy|https://pub.dev/packages/lazy_collection
-lazy_g_drive|https://github.com/J-Siu/flutter_lazy|https://pub.dev/packages/lazy_g_srive
-lazy_g_sync|https://github.com/J-Siu/flutter_lazy|https://pub.dev/packages/lazy_g_sync
-lazy_log|https://github.com/J-Siu/flutter_lazy|https://pub.dev/packages/lazy_log
-lazy_sign_in|https://github.com/J-Siu/flutter_lazy|https://pub.dev/packages/lazy_sign_in
-lazy_sign_in_extension|https://github.com/J-Siu/flutter_lazy|https://pub.dev/packages/lazy_sign_in_extension
-lazy_sign_in_google|https://github.com/J-Siu/flutter_lazy|https://pub.dev/packages/lazy_sign_in_google
-provider|https://github.com/rrousselGit/provider|https://pub.dev/packages/provider
-reorderables|https://github.com/hanshengchiu/reorderables|https://pub.dev/packages/reorderables
-theme_provider|https://www.github.com/kdsuneraavinash/theme_provider|https://pub.dev/packages/theme_provider
+| Library                | Source                                                | Pub.Dev                                         |
+| ---------------------- | ----------------------------------------------------- | ----------------------------------------------- |
+| json_preferences       | https://github.com/J-Siu/flutter_lazy                 | https://pub.dev/packages/json_preferences       |
+| lazy_cache             | https://github.com/J-Siu/flutter_lazy                 | https://pub.dev/packages/lazy_cache             |
+| lazy_collection        | https://github.com/J-Siu/flutter_lazy                 | https://pub.dev/packages/lazy_collection        |
+| lazy_g_drive           | https://github.com/J-Siu/flutter_lazy                 | https://pub.dev/packages/lazy_g_srive           |
+| lazy_g_sync            | https://github.com/J-Siu/flutter_lazy                 | https://pub.dev/packages/lazy_g_sync            |
+| lazy_log               | https://github.com/J-Siu/flutter_lazy                 | https://pub.dev/packages/lazy_log               |
+| lazy_sign_in           | https://github.com/J-Siu/flutter_lazy                 | https://pub.dev/packages/lazy_sign_in           |
+| lazy_sign_in_extension | https://github.com/J-Siu/flutter_lazy                 | https://pub.dev/packages/lazy_sign_in_extension |
+| lazy_sign_in_google    | https://github.com/J-Siu/flutter_lazy                 | https://pub.dev/packages/lazy_sign_in_google    |
+| provider               | https://github.com/rrousselGit/provider               | https://pub.dev/packages/provider               |
+| reorderables           | https://github.com/hanshengchiu/reorderables          | https://pub.dev/packages/reorderables           |
+| theme_provider         | https://www.github.com/kdsuneraavinash/theme_provider | https://pub.dev/packages/theme_provider         |
 
 ### License
 

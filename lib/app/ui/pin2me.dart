@@ -1,9 +1,8 @@
-// import 'package:lazy_sign_in/lazy_sign_in.dart' as lazy;
-import 'package:flutter/material.dart';
-import 'package:lazy_collection/lazy_collection.dart' as lazy;
 import 'package:lazy_log/lazy_log.dart' as lazy;
+import 'package:lazy_ui_utils/lazy_ui_utils.dart' as lazy;
 import 'package:reorderables/reorderables.dart';
 import 'ui.dart';
+import 'dart:async';
 
 class Pin2Me extends StatefulWidget {
   final String? title;
@@ -18,16 +17,22 @@ class _Pin2Me extends State<Pin2Me> {
   bool debugLog = false;
   final int minSyncSpinningSeconds = 10;
   ScrollController scrollController = ScrollController();
+  Timer? _tokenRefreshTimer;
 
   @override
   void initState() {
     super.initState();
-    globalLazyGSync.syncError.addListener(_syncErrorHandler);
+    globalLazyGSync.error.addListener(_syncErrorHandler);
+    globalLazySignIn.isSignedIn.addListener(_signInHandler);
+    globalLazySignIn.token.addListener(_tokenHandler);
   }
 
   @override
   void dispose() {
-    globalLazyGSync.syncError.removeListener(_syncErrorHandler);
+    _tokenRefreshTimer?.cancel();
+    globalLazyGSync.error.removeListener(_syncErrorHandler);
+    globalLazySignIn.isSignedIn.removeListener(_signInHandler);
+    globalLazySignIn.token.removeListener(_tokenHandler);
     super.dispose();
   }
 
@@ -64,24 +69,12 @@ class _Pin2Me extends State<Pin2Me> {
       onPressed: () => dialogSetting(context),
       icon: const Icon(Icons.settings),
     );
-    Widget buttonSync = lazy.SpinningWidget(
-      minSyncSpinningSeconds: 10,
-      spin: globalLazyGSync.syncing,
-      child: IconButton(
-        icon: Icon(
-          Icons.sync,
-          color: (globalLazyGSync.syncError.value) ? Colors.red : null,
-        ),
-        onPressed: () => globalLazyGSync.sync(),
-      ),
-    );
 
-    // Display sync button if GDrive sync enabled
-    Widget buttonSyncWidget = Consumer<OptionService>(
-      builder: (context, option, child) {
+    Widget buttonSync = Consumer<bool>(
+      builder: (context, isSignedIn, child) {
         List<Widget> children = [];
-        if (option.gSync) {
-          children.add(buttonSync);
+        if (isSignedIn) {
+          children.add(const WidgetSync());
         }
         return Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -90,27 +83,19 @@ class _Pin2Me extends State<Pin2Me> {
       },
     );
 
-    // // Display user avatar if sign-in and available
-    // Widget widgetAvatar = Consumer2<OptionService, lazy.SignInMsg>(
-    //   builder: (context, option, msg, child) {
-    //     List<Widget> children = [];
-    //     if (option.gSync &&
-    //         // msg.status &&
-    //         globalLazySignIn.photoUrl.isNotEmpty) {
-    //       children.add(SizedBox(
-    //         height: appbarIconSize,
-    //         width: appbarIconSize,
-    //         child: imageAvatar(Image.network(globalLazySignIn.photoUrl)),
-    //       ));
-    //     }
-    //     return Row(
-    //       // mainAxisSize: MainAxisSize.min,
-    //       crossAxisAlignment: CrossAxisAlignment.center,
-    //       children: children,
-    //     );
-    //   },
-    // );
-    Widget widgetAvatar = const WidgetAvatar();
+    Widget widgetAvatar = Consumer<bool>(
+      builder: (context, isSignedIn, child) {
+        List<Widget> children = [];
+        if (isSignedIn) {
+          children.add(const WidgetAvatar());
+        }
+        return Row(
+          // mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: children,
+        );
+      },
+    );
 
     List<Widget> actions = [];
     if (_menuOpen) {
@@ -121,9 +106,10 @@ class _Pin2Me extends State<Pin2Me> {
       ];
     }
 
-    actions.add(buttonSyncWidget);
-    actions.add(buttonMenu);
-    actions.add(widgetAvatar);
+    actions
+      ..add(buttonSync)
+      ..add(buttonMenu)
+      ..add(widgetAvatar);
 
     var appBarTextColor = Theme.of(context).textTheme.bodyLarge?.color;
     AppBar appBar = AppBar(
@@ -136,22 +122,8 @@ class _Pin2Me extends State<Pin2Me> {
       // title: Text(title),
     );
 
-    Widget spacer = SizedBox(height: 58, child: Row());
-    // Widget reorderableWarp = Consumer<SiteWidgets>(builder: (
-    //   context,
-    //   siteWidgets,
-    //   child,
-    // ) {
-    //   return ReorderableWrap(
-    //     alignment: WrapAlignment.center,
-    //     buildDraggableFeedback: _reorderableWarpFeedback,
-    //     footer: spacer,
-    //     header: [spacer],
-    //     onReorder: siteWidgets.reorder,
-    //     runAlignment: WrapAlignment.start,
-    //     children: siteWidgets.list,
-    //   );
-    // });
+    Widget spacer = const SizedBox(height: 58, child: Row());
+
     Widget sitesWrapReorderable() => ReorderableWrap(
           alignment: WrapAlignment.center,
           buildDraggableFeedback: _reorderableWarpFeedback,
@@ -220,10 +192,53 @@ class _Pin2Me extends State<Pin2Me> {
     );
   }
 
-  void _syncErrorHandler() async {
-    // Trigger setState to change color of the sync icon
-    String debugPrefix = '$runtimeType._syncErrorHandler()';
+  void _signInHandler() {
+    String debugPrefix = '$runtimeType._signInHandler()';
     lazy.log(debugPrefix);
-    setState(() {});
+    if (globalLazySignIn.isSignedIn.value) {
+      globalLazySignIn.authorize();
+    }
+  }
+
+  void _syncErrorHandler() {
+    String debugPrefix = '$runtimeType._syncErrorHandler()';
+    if (globalLazyGSync.error.value) {
+      // Assume token error, clear token
+      lazy.log('$debugPrefix: clear token.');
+      globalLazySignIn.token.value = '';
+    }
+  }
+
+  void _tokenHandler() {
+    String debugPrefix = '$runtimeType._tokenHandler()';
+    lazy.log(debugPrefix);
+    if (globalLazySignIn.token.value.isNotEmpty) {
+      _tokenRefreshInterval = tokenInterval;
+      // reset GSync error
+      globalLazyGSync.error.value = false;
+      turnOnGSync();
+    } else {
+      _tokenRefreshInterval = 0;
+      turnOffGSync();
+    }
+  }
+
+  // Set token refresh timer in minute
+  set _tokenRefreshInterval(int v) {
+    String debugPrefix = '$runtimeType._tokenRefreshInterval($v)';
+    lazy.log(debugPrefix);
+    if (v > 0) {
+      _tokenRefreshTimer?.cancel();
+      // Setup 30min timer
+      _tokenRefreshTimer = Timer.periodic(Duration(minutes: v), (timer) {
+        lazy.log('$debugPrefix:authorize()');
+        // clear current token
+        globalLazySignIn.token.value = '';
+        globalLazySignIn.authorize();
+      });
+    } else {
+      // remove listener
+      _tokenRefreshTimer?.cancel();
+    }
   }
 }

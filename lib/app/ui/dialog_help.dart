@@ -1,5 +1,5 @@
-import 'package:lazy_collection/lazy_collection.dart' as lazy;
 import 'package:flutter/material.dart';
+import 'package:lazy_ui_utils/lazy_ui_utils.dart' as lazy;
 
 void dialogHelp(BuildContext context) {
   showDialog(

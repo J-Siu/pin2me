@@ -1,3 +1,9 @@
+- 2.0.0
+  - update Google Identity API
+  - update build script
+  - update dependency
+  - update doc
+  - update extension manifest to V3
 - 1.0.28
   - Fix #3, blank page
 - 1.0.27

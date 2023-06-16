@@ -1,0 +1,51 @@
+# ext.moz.pubspec.local.yaml
+
+name: pin2me
+description: "Pin your website from any device, any browser! Support Import/Export without sign-in."
+# documentation:
+homepage: https://johnsiu.com/app/pin2me/
+# issue_tracker:
+publish_to: 'none'
+# repository:
+version: 2.0.0
+
+environment:
+  sdk: ">=2.17.6 <3.0.0"
+
+dependencies:
+  # cupertino_icons: ^1.0.5
+  flutter:
+    sdk: flutter
+  http: ^1.0.0
+  json_preferences:
+    path: ../flutter_lazy/json_preferences
+  lazy_cache:
+    path: ../flutter_lazy/lazy_cache
+  lazy_download:
+    path: ../flutter_lazy/lazy_download
+  lazy_extensions:
+    path: ../flutter_lazy/lazy_extensions
+  lazy_g_drive:
+    path: ../flutter_lazy/lazy_g_drive
+  lazy_g_sync:
+    path: ../flutter_lazy/lazy_g_sync
+  lazy_log:
+    path: ../flutter_lazy/lazy_log
+  lazy_sign_in:
+    path: ../flutter_lazy/lazy_sign_in
+  lazy_sign_in_extension:
+    path: ../flutter_lazy/lazy_sign_in_extension
+  lazy_ui_utils:
+    path: ../flutter_lazy/lazy_ui_utils
+  provider: ^6.0.3
+  reorderables: ^0.6.0
+  theme_provider: ^0.6.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+flutter:
+  uses-material-design: true
+  assets:
+    - img/

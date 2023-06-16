@@ -1,9 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:lazy_collection/lazy_collection.dart' as lazy;
 import 'package:lazy_download/lazy_download.dart' as lazy;
 import 'package:lazy_extensions/lazy_extensions.dart' as lazy;
-import 'package:lazy_log/lazy_log.dart' as lazy;
+import 'package:lazy_ui_utils/lazy_ui_utils.dart' as lazy;
+// import 'package:lazy_log/lazy_log.dart' as lazy;
 import 'ui.dart';
 
 class DialogImportExport extends StatefulWidget {
@@ -21,7 +20,7 @@ class _DialogImportExport extends State<DialogImportExport> {
   @override
   void initState() {
     super.initState();
-    _setting = lazy.jsonPretty(_sites.export(includePreset: true));
+    _setting = (_sites.export(includePreset: true)).jsonPretty();
   }
 
   @override
