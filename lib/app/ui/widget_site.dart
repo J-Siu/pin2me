@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:lazy_log/lazy_log.dart' as lazy;
-import 'package:lazy_extensions/lazy_extensions.dart' as lazy;
 import 'package:lazy_ui_utils/lazy_ui_utils.dart' as lazy;
 import 'ui.dart';
 

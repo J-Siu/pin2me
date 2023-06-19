@@ -28,7 +28,7 @@ class _WidgetSync extends State {
 
   @override
   build(BuildContext context) {
-    return lazy.SpinningWidget(
+    return lazy.SpinWidget(
       minSyncSpinningSeconds: 10,
       spin: globalLazyGSync.syncing,
       child: IconButton(
