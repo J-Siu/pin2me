@@ -13,15 +13,18 @@ class Pin2Me extends StatefulWidget {
 }
 
 class _Pin2Me extends State<Pin2Me> {
-  bool _menuOpen = false;
-  bool debugLog = false;
-  final int minSyncSpinningSeconds = 10;
   ScrollController scrollController = ScrollController();
   Timer? _tokenRefreshTimer;
+  bool __tokenRefresh = false;
+  bool _menuOpen = false;
+  bool debugLog = false;
+  final int _tokenRefreshInterval = 30;
+  final int minSyncSpinningSeconds = 10;
 
   @override
   void initState() {
     super.initState();
+    _tokenRefreshTimer?.cancel();
     globalLazyGSync.error.addListener(_syncErrorHandler);
     globalLazySignIn.isSignedIn.addListener(_signInHandler);
     globalLazySignIn.token.addListener(_tokenHandler);
@@ -213,32 +216,33 @@ class _Pin2Me extends State<Pin2Me> {
     String debugPrefix = '$runtimeType._tokenHandler()';
     lazy.log(debugPrefix);
     if (globalLazySignIn.token.value.isNotEmpty) {
-      _tokenRefreshInterval = tokenInterval;
+      _tokenRefresh = true;
       // reset GSync error
-      globalLazyGSync.error.value = false;
       turnOnGSync();
     } else {
-      _tokenRefreshInterval = 0;
+      _tokenRefresh = false;
       turnOffGSync();
     }
   }
 
   // Set token refresh timer in minute
-  set _tokenRefreshInterval(int v) {
-    String debugPrefix = '$runtimeType._tokenRefreshInterval($v)';
+  // bool get _tokenRefresh => __tokenRefresh;
+  set _tokenRefresh(bool v) {
+    String debugPrefix = '$runtimeType._tokenRefresh($v)';
     lazy.log(debugPrefix);
-    if (v > 0) {
-      _tokenRefreshTimer?.cancel();
-      // Setup 30min timer
-      _tokenRefreshTimer = Timer.periodic(Duration(minutes: v), (timer) {
-        lazy.log('$debugPrefix:authorize()');
-        // clear current token
-        globalLazySignIn.token.value = '';
-        globalLazySignIn.authorize();
-      });
-    } else {
-      // remove listener
-      _tokenRefreshTimer?.cancel();
+    if (__tokenRefresh != v) {
+      __tokenRefresh = v;
+      if (v) {
+        _tokenRefreshTimer?.cancel();
+        _tokenRefreshTimer =
+            Timer.periodic(Duration(minutes: _tokenRefreshInterval), (timer) {
+          lazy.log('$debugPrefix:authorize()');
+          globalLazySignIn.authorize();
+        });
+      } else {
+        // remove listener
+        _tokenRefreshTimer?.cancel();
+      }
     }
   }
 }
