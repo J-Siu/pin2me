@@ -13,12 +13,14 @@ DIR_REMOTE='~/data/pin2me/demo'
 SSH_HOST=jsiu.dev
 
 # clean local
-echo "clean .DS_Store: $DIR_LOCAL"
-rm -rf $DIR_LOCAL/.DS_Store $DIR_LOCAL/*/.DS_Store $DIR_LOCAL/*/*/.DS_Store
+CMD="rm -rf $DIR_LOCAL/.DS_Store $DIR_LOCAL/*/.DS_Store $DIR_LOCAL/*/*/.DS_Store"
+echo "$CMD"
+$CMD
 
 # clean remote
-echo "clean: $SSH_HOST:$DIR_REMOTE"
-ssh $SSH_HOST "rm -rf $DIR_REMOTE"
+CMD="ssh $SSH_HOST rm -rf $DIR_REMOTE"
+echo "$CMD"
+$CMD
 
 # upload
 CMD="scp -r $DIR_LOCAL $SSH_HOST:$DIR_REMOTE"
