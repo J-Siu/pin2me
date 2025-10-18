@@ -6,10 +6,10 @@
 		}
 	},
 	"chrome_url_overrides": {
-		"newtab": "index.html"
+		"newtab": "your_page.html"
 	},
 	"content_security_policy": {
-		"extension_pages": "script-src 'self'; object-src 'self'"
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
 	},
 	"description": "Pin your website from any device, any browser! Support Import/Export without sign-in.",
 	"icons": {
