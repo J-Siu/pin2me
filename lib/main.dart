@@ -18,7 +18,7 @@ void main() async {
     ..repo = 'Github'
     ..repoUrl = 'https://github.com/j-siu/pin2me/'
     ..title = 'Pin2Me'
-    ..version = '2.0.0';
+    ..version = '2.1.0';
 
   // Pre-loading all options to prevent widget rebuild trigger by notification
   await globalOptionUI.load();

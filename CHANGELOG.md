@@ -1,3 +1,7 @@
+- 2.1.0
+  - cleanup extension build scripts
+  - update extension build scripts for Flutter 3.35.6
+  - update Firefox manifest for wasm support
 - 2.0.0
   - update Google Identity API
   - update build script
