@@ -63,7 +63,6 @@ prepSrc() {
 	cp $DIR_SCRIPT_SRC/$FILE_INDEX web/index.html
 	cp $DIR_SCRIPT_SRC/$FILE_MANIFEST web/manifest.json
 	cp $DIR_SCRIPT_SRC/$FILE_PUBSPEC pubspec.yaml
-	rm $DIR_SCRIPT/.current.*
 	touch $DIR_SCRIPT/$FILE_LOCK
 	flutter pub get
 	echo $LOG_PREFIX $LOG_END

@@ -18,42 +18,12 @@ BUILD_OPTION_BASE="web --base-href=$BASE_HREF $CSP --no-web-resources-cdn"
 # BUILD_OPTION Control by buildExt and buildExtProfile
 BUILD_OPTION=""
 
-# $1 = BUILD_TYPE
-_buildExt() {
+# Copy extension from build/web to target location
+extCopy() {
 	BUILD_TYPE=$1
-	DIR_TARGET=$DIR_TARGET_BASE/$BUILD_TYPE
-
-	BUILD_CMD="flutter build $BUILD_OPTION"
-	echo $BUILD_CMD
-	$BUILD_CMD
-}
-
-# $1
-buildExt() {
-	BUILD_TYPE=$1
-	local LOG_PREFIX="=== $SCRIPT_BUILD_EXT_COMMON: buildExt $BUILD_TYPE"
+	local LOG_PREFIX="=== $SCRIPT_BUILD_EXT_COMMON: extCopy $BUILD_TYPE"
 	echo $LOG_PREFIX
 
-	BUILD_OPTION="$BUILD_OPTION_BASE"
-	_buildExt $BUILD_TYPE
-
-	echo $LOG_PREFIX $LOG_END
-}
-
-# $1
-buildExtProfile() {
-	BUILD_TYPE=$1
-	local LOG_PREFIX="=== $SCRIPT_BUILD_EXT_COMMON: buildExtProfile $BUILD_TYPE"
-	echo $LOG_PREFIX
-
-	BUILD_OPTION="$BUILD_OPTION_BASE $PROFILE"
-	_buildExt $BUILD_TYPE
-
-	echo $LOG_PREFIX $LOG_END
-}
-
-cpExt() {
-	BUILD_TYPE=$1
 	DIR_TARGET=$DIR_TARGET_BASE/$BUILD_TYPE
 	echo $BUILD_CMD
 	rm -rf ${DIR_TARGET}
@@ -62,6 +32,8 @@ cpExt() {
 	if [ "$BUILD_TYPE" == "$EXT_MOZ" ]; then
 		mv "$DIR_TARGET/index.html" "$DIR_TARGET/your_page.html"
 	fi
+
+	echo $LOG_PREFIX $LOG_END
 }
 
 # $1
@@ -83,41 +55,71 @@ extZip() {
 		zip -r $FILE_ZIP *
 		echo Zip created: $FILE_ZIP
 	)
+
 	echo $LOG_PREFIX $LOG_END
 }
 
-buildExtX() {
+# $1 = BUILD_TYPE
+extBuild() {
+	BUILD_TYPE=$1
+	local LOG_PREFIX="=== $SCRIPT_BUILD_EXT_COMMON: buildExt $BUILD_TYPE"
+	echo $LOG_PREFIX
+
+	DIR_TARGET=$DIR_TARGET_BASE/$BUILD_TYPE
+	BUILD_OPTION="$BUILD_OPTION_BASE"
+	BUILD_CMD="flutter build $BUILD_OPTION"
+	echo $BUILD_CMD
+	$BUILD_CMD
+
+	echo $LOG_PREFIX $LOG_END
+}
+
+# $1 = BUILD_TYPE
+buildExt() {
 	BUILD_TYPE="$1"
-	echo
-	echo --- Build $BUILD_TYPE
-	echo
+	local LOG_PREFIX="=== $SCRIPT_BUILD_EXT_COMMON: buildExt $BUILD_TYPE"
+	echo $LOG_PREFIX
+
 	prepSrc $BUILD_TYPE
-	buildExt $BUILD_TYPE
-	cpExt $BUILD_TYPE
+	extBuild $BUILD_TYPE
+	extCopy $BUILD_TYPE
 	extZip $BUILD_TYPE
+
+	echo $LOG_PREFIX $LOG_END
+}
+
+# $1 = BUILD_TYPE
+buildExtProfile() {
+	BUILD_TYPE=$1
+	local LOG_PREFIX="=== $SCRIPT_BUILD_EXT_COMMON: buildExtProfile $BUILD_TYPE"
+	echo $LOG_PREFIX
+
+	BUILD_OPTION="$BUILD_OPTION_BASE $PROFILE"
+	_buildExt $BUILD_TYPE
+
+	echo $LOG_PREFIX $LOG_END
 }
 
 buildExtChrome() {
 	echo
 	echo --- Build Chrome extension for release
 	echo
-	buildExtX ext.chrome
+	buildExt $EXT_CHROME
 }
 
 buildExtChromeTest() {
 	echo
 	echo --- Build Chrome extension for debug/profiling
 	echo
-	BUILD_TYPE=ext.chrome.test
-	prepSrc $BUILD_TYPE
-	buildExtProfile $BUILD_TYPE
+	prepSrc $EXT_CHROME
+	buildExtProfile $EXT_CHROME_TEST
 }
 
 buildExtMoz() {
 	echo
 	echo --- Build Firefox extension for release
 	echo
-	buildExtX $EXT_MOZ
+	buildExt $EXT_MOZ
 }
 
 buildExtMozTest() {

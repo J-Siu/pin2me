@@ -43,7 +43,7 @@ buildWeb() {
 	# _buildWebCanvas $BASE_HREF
 	_buildWebHtml $BASE_HREF
 
-	# Occationally flutter.js is missing from build/web
+	# occasionally flutter.js is missing from build/web
 	checkFlutterJs
 
 	echo $LOG_PREFIX $LOG_END
