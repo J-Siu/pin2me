@@ -1,9 +1,3 @@
-# BUILD_TYPE
-EXT_CHROME="ext.chrome"
-EXT_CHROME_TEST="$EXT_CHROME.test"
-EXT_MOZ="ext.moz"
-EXT_MOZ_TEST="$EXT_MOZ.test"
-
 DIR_SCRIPT=$(dirname -- "$0")
 source $DIR_SCRIPT/buildCommon.sh
 
@@ -16,7 +10,7 @@ BASE_HREF="/"
 # Extension must use $RENDERER_HTML $CSP
 BUILD_OPTION_BASE="web --base-href=$BASE_HREF $CSP --no-web-resources-cdn"
 # BUILD_OPTION Control by buildExt and buildExtProfile
-BUILD_OPTION=""
+BUILD_OPTION="$BUILD_OPTION_BASE"
 
 # Copy extension from build/web to target location
 extCopy() {
@@ -47,6 +41,7 @@ extZip() {
 	FILE_ZIP=$DIR_TARGET_BASE/$BUILD_TYPE.zip
 	(
 		cd $DIR_TARGET
+		pwd
 		# clean dir
 		rm -rf .DS_Store */.DS_Store */*/.DS_Store
 		# clean old zip
@@ -66,7 +61,6 @@ extBuild() {
 	echo $LOG_PREFIX
 
 	DIR_TARGET=$DIR_TARGET_BASE/$BUILD_TYPE
-	BUILD_OPTION="$BUILD_OPTION_BASE"
 	BUILD_CMD="flutter build $BUILD_OPTION"
 	echo $BUILD_CMD
 	$BUILD_CMD
@@ -88,18 +82,6 @@ buildExt() {
 	echo $LOG_PREFIX $LOG_END
 }
 
-# $1 = BUILD_TYPE
-buildExtProfile() {
-	BUILD_TYPE=$1
-	local LOG_PREFIX="=== $SCRIPT_BUILD_EXT_COMMON: buildExtProfile $BUILD_TYPE"
-	echo $LOG_PREFIX
-
-	BUILD_OPTION="$BUILD_OPTION_BASE $PROFILE"
-	_buildExt $BUILD_TYPE
-
-	echo $LOG_PREFIX $LOG_END
-}
-
 buildExtChrome() {
 	echo
 	echo --- Build Chrome extension for release
@@ -111,8 +93,8 @@ buildExtChromeTest() {
 	echo
 	echo --- Build Chrome extension for debug/profiling
 	echo
-	prepSrc $EXT_CHROME
-	buildExtProfile $EXT_CHROME_TEST
+	BUILD_OPTION="$BUILD_OPTION $PROFILE"
+	buildExt $EXT_CHROME
 }
 
 buildExtMoz() {
@@ -126,6 +108,6 @@ buildExtMozTest() {
 	echo
 	echo --- Build Firefox extension for debug/profiling
 	echo
-	prepSrc $EXT_MOZ
-	buildExtProfile $EXT_MOZ_TEST
+	BUILD_OPTION="$BUILD_OPTION $PROFILE"
+	buildExt $EXT_MOZ_TEST
 }

@@ -16,9 +16,9 @@ bash scripts/buildExtMoz.sh
 bash scripts/buildExtMozTest.sh
 ```
 
-Profile/Test target at: ~/Downloads/pin2me/ext.moz
-Release(for submission) target at: ~/Downloads/pin2me/ext.moz
-Zip file for submission will be located at: ~/Downloads/pin2me/ext.moz.zip
+Profile/Test target at: ~/Downloads/pin2me/ext.moz.test/
+Release for submission: ~/Downloads/pin2me/ext.moz/
+Zip file for submission: ~/Downloads/pin2me/ext.moz.zip
 
 Detail Steps
 ============

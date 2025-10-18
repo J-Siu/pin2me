@@ -1,3 +1,10 @@
+# BUILD_TYPE
+EXT_CHROME="ext.chrome"
+EXT_CHROME_TEST="$EXT_CHROME.test"
+EXT_MOZ="ext.moz"
+EXT_MOZ_TEST="$EXT_MOZ.test"
+WEB="web"
+
 SCRIPT_BUILD_COMMON="scripts/buildCommon.sh"
 DIR_SCRIPT_SRC=$DIR_SCRIPT/src
 APP_NAME=${PWD##*/}

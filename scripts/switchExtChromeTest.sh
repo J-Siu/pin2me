@@ -1,4 +1,4 @@
 DIR_SCRIPT=$(dirname -- "$0")
 source $DIR_SCRIPT/buildCommon.sh
 
-prepSrc ext.chrome.test
+prepSrc $EXT_CHROME_TEST
