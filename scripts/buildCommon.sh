@@ -16,9 +16,6 @@ NO_ANALYTICS="--suppress-analytics"
 NO_PUB="--no-pub"
 # Profile
 PROFILE="--profile"
-# flutter renderer option
-RENDERER_CANVAS='--web-renderer canvaskit'
-RENDERER_HTML='--web-renderer html'
 # generate source map
 SRC_MAP="--source-maps"
 # --- fluttter build option - end
@@ -50,9 +47,9 @@ function delFlutterJs {
 
 # Prepare source tree base on build type
 # $1 = BUILD_TYPE:
-#		ext.chrome      = chrome extension
-#		ext.chrome.test = chrome extension for test
-#		ext.moz         = filefox extension
+#		ext.chrome      = Chrome extension
+#		ext.chrome.test = Chrome extension for test
+#		ext.moz         = Firefox extension
 #		web             = webapp
 function prepSrc {
 	BUILD_TYPE=$1
@@ -60,19 +57,14 @@ function prepSrc {
 	echo $LOG_PREFIX
 	FILE_API="$BUILD_TYPE.api"
 	FILE_INDEX="$BUILD_TYPE.index.html"
-	FILE_LOCK=".current.$1$LOCAL"
 	FILE_MANIFEST="$BUILD_TYPE.manifest.json"
 	FILE_PUBSPEC="$BUILD_TYPE.pubspec$LOCAL.yaml"
-	if [ ! -f $DIR_SCRIPT/$FILE_LOCK ]; then
-		flutter clean
-		cp $DIR_SCRIPT_SRC/$FILE_API lib/app/ui/api.dart
-		cp $DIR_SCRIPT_SRC/$FILE_INDEX web/index.html
-		cp $DIR_SCRIPT_SRC/$FILE_MANIFEST web/manifest.json
-		cp $DIR_SCRIPT_SRC/$FILE_PUBSPEC pubspec.yaml
-		rm $DIR_SCRIPT/.current.*
-		touch $DIR_SCRIPT/$FILE_LOCK
-		rm pubspec.lock
-		flutter pub get
-	fi
+	cp $DIR_SCRIPT_SRC/$FILE_API lib/app/ui/api.dart
+	cp $DIR_SCRIPT_SRC/$FILE_INDEX web/index.html
+	cp $DIR_SCRIPT_SRC/$FILE_MANIFEST web/manifest.json
+	cp $DIR_SCRIPT_SRC/$FILE_PUBSPEC pubspec.yaml
+	rm $DIR_SCRIPT/.current.*
+	touch $DIR_SCRIPT/$FILE_LOCK
+	flutter pub get
 	echo $LOG_PREFIX $LOG_END
 }

@@ -11,7 +11,7 @@ function _buildWebCanvas {
 	local LOG_PREFIX="=== $SCRIPT_BUILD_SITE_COMMON: _buildWebCanvas $BASE_HREF"
 	echo $LOG_PREFIX
 
-	BUILD_OPTION="web --base-href=$BASE_HREF $RENDERER_CANVAS"
+	BUILD_OPTION="web --base-href=$BASE_HREF"
 	BUILD_CMD="flutter build $BUILD_OPTION"
 	echo $BUILD_CMD
 	$BUILD_CMD
