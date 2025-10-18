@@ -19,7 +19,7 @@ BUILD_OPTION_BASE="web --base-href=$BASE_HREF $CSP --no-web-resources-cdn"
 BUILD_OPTION=""
 
 # $1 = BUILD_TYPE
-function _buildExt {
+_buildExt() {
 	BUILD_TYPE=$1
 	DIR_TARGET=$DIR_TARGET_BASE/$BUILD_TYPE
 
@@ -29,7 +29,7 @@ function _buildExt {
 }
 
 # $1
-function buildExt {
+buildExt() {
 	BUILD_TYPE=$1
 	local LOG_PREFIX="=== $SCRIPT_BUILD_EXT_COMMON: buildExt $BUILD_TYPE"
 	echo $LOG_PREFIX
@@ -41,7 +41,7 @@ function buildExt {
 }
 
 # $1
-function buildExtProfile {
+buildExtProfile() {
 	BUILD_TYPE=$1
 	local LOG_PREFIX="=== $SCRIPT_BUILD_EXT_COMMON: buildExtProfile $BUILD_TYPE"
 	echo $LOG_PREFIX
@@ -52,7 +52,7 @@ function buildExtProfile {
 	echo $LOG_PREFIX $LOG_END
 }
 
-mvExt() {
+cpExt() {
 	BUILD_TYPE=$1
 	DIR_TARGET=$DIR_TARGET_BASE/$BUILD_TYPE
 	echo $BUILD_CMD
@@ -65,7 +65,7 @@ mvExt() {
 }
 
 # $1
-function extZip {
+extZip() {
 	BUILD_TYPE=$1
 	local LOG_PREFIX="=== $SCRIPT_BUILD_EXT_COMMON: extZip $BUILD_TYPE"
 	echo $LOG_PREFIX
@@ -97,14 +97,14 @@ buildExtX() {
 	extZip $BUILD_TYPE
 }
 
-function buildExtChrome {
+buildExtChrome() {
 	echo
 	echo --- Build Chrome extension for release
 	echo
 	buildExtX ext.chrome
 }
 
-function buildExtChromeTest {
+buildExtChromeTest() {
 	echo
 	echo --- Build Chrome extension for debug/profiling
 	echo
@@ -113,14 +113,14 @@ function buildExtChromeTest {
 	buildExtProfile $BUILD_TYPE
 }
 
-function buildExtMoz {
+buildExtMoz() {
 	echo
 	echo --- Build Firefox extension for release
 	echo
 	buildExtX $EXT_MOZ
 }
 
-function buildExtMozTest {
+buildExtMozTest() {
 	echo
 	echo --- Build Firefox extension for debug/profiling
 	echo

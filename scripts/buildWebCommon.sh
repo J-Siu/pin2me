@@ -6,7 +6,7 @@ SCRIPT_BUILD_SITE_COMMON="$DIR_SCRIPT/buildWebCommon.sh"
 DIR_TARGET_BASE=~/Downloads/${APP_NAME}
 
 # $1 = BASE_HREF
-function _buildWebCanvas {
+_buildWebCanvas() {
 	BASE_HREF="$1"
 	local LOG_PREFIX="=== $SCRIPT_BUILD_SITE_COMMON: _buildWebCanvas $BASE_HREF"
 	echo $LOG_PREFIX
@@ -20,7 +20,7 @@ function _buildWebCanvas {
 }
 
 # $1 = BASE_HREF
-function _buildWebHtml {
+_buildWebHtml() {
 	BASE_HREF="$1"
 	local LOG_PREFIX="=== $SCRIPT_BUILD_SITE_COMMON: _buildWebHtml $BASE_HREF"
 	echo $LOG_PREFIX
@@ -35,7 +35,7 @@ function _buildWebHtml {
 }
 
 # $1 = BASE_HREF
-function buildWeb {
+buildWeb() {
 	BASE_HREF="$1"
 	local LOG_PREFIX="=== $SCRIPT_BUILD_SITE_COMMON: buildWeb $BASE_HREF"
 	echo $LOG_PREFIX

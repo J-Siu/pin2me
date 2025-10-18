@@ -20,7 +20,7 @@ PROFILE="--profile"
 SRC_MAP="--source-maps"
 # --- fluttter build option - end
 
-function checkFlutterJs {
+checkFlutterJs() {
 	local LOG_PREFIX="=== $SCRIPT_BUILD_COMMON:checkFlutterJs"
 	echo $LOG_PREFIX
 	if [ ! -f build/web/flutter.js ]; then
@@ -30,14 +30,14 @@ function checkFlutterJs {
 	echo $LOG_PREFIX $LOG_END
 }
 
-function delCanvaskit {
+delCanvaskit() {
 	local LOG_PREFIX="=== $SCRIPT_BUILD_COMMON:delCanvaskit"
 	echo $LOG_PREFIX
 	rm -rf build/web/canvaskit
 	echo $LOG_PREFIX $LOG_END
 }
 
-function delFlutterJs {
+delFlutterJs() {
 	local LOG_PREFIX="=== $SCRIPT_BUILD_COMMON:delFlutterJs"
 	echo $LOG_PREFIX
 	rm -rf build/web/flutter.js
@@ -51,7 +51,7 @@ function delFlutterJs {
 #		ext.chrome.test = Chrome extension for test
 #		ext.moz         = Firefox extension
 #		web             = webapp
-function prepSrc {
+prepSrc() {
 	BUILD_TYPE=$1
 	local LOG_PREFIX="=== $SCRIPT_BUILD_COMMON:prepSrc $BUILD_TYPE $LOCAL"
 	echo $LOG_PREFIX
