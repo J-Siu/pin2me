@@ -2,14 +2,19 @@
 	"author": "JSiu.Dev",
 	"browser_specific_settings": {
 		"gecko": {
-			"id": "pin2me@jsiu.dev"
+			"id": "pin2me@jsiu.dev",
+			"data_collection_permissions": {
+				"required": [
+					"none"
+				]
+			}
 		}
 	},
 	"chrome_url_overrides": {
 		"newtab": "your_page.html"
 	},
 	"content_security_policy": {
-    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+		"extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
 	},
 	"description": "Pin your website from any device, any browser! Support Import/Export without sign-in.",
 	"icons": {
