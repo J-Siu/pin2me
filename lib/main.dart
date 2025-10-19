@@ -11,7 +11,7 @@ void main() async {
     ..author = 'By: John Siu'
     ..blog = 'JSiu.Dev'
     ..blogUrl = 'https://jsiu.dev/'
-    ..copyright = 'Copyright © 2023'
+    ..copyright = 'Copyright © 2025'
     ..license = 'MIT License'
     ..privacyPolicyUrl = 'https://johnsiu.com/privacy_policy/pin2me/'
     ..project = 'Pin2Me'

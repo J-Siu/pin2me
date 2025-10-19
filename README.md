@@ -6,11 +6,10 @@ Pin website to New Tab page from any device, any browser! Support Import/Export 
 
 <!-- TOC -->
 
-- [Table Of Content](#table-of-content)
 - [Highlight](#highlight)
 - [Platform](#platform)
 - [Usage](#usage)
-  - [Google Login Optional](#google-login-optional)
+  - [Google Login (Optional)](#google-login-optional)
   - [Import/Export](#importexport)
     - [Support](#support)
     - [Access](#access)
@@ -21,7 +20,6 @@ Pin website to New Tab page from any device, any browser! Support Import/Export 
 - [Planned](#planned)
 - [Build](#build)
 - [Repository](#repository)
-- [Known Issue](#known-issue)
 - [Contributors](#contributors)
 - [Change Log](#change-log)
 - [Library](#library)
@@ -123,12 +121,6 @@ Pin2Me comes with a few preset sites. Their URLs and names cannot be change, but
 git clone https://github.com/J-Siu/pin2me
 ```
 
-### Known Issue
-
-- Firefox
-  - #2 Extension showing a extension url in address bar
-  - Add-on not activate on first tab
-
 ### Contributors
 
 - [John, Sing Dao, Siu](https://github.com/J-Siu)
@@ -158,7 +150,7 @@ git clone https://github.com/J-Siu/pin2me
 
 The MIT License (MIT)
 
-Copyright © 2023 John, Sing Dao, Siu <john.sd.siu@gmail.com>
+Copyright © 2025 John, Sing Dao, Siu <john.sd.siu@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
